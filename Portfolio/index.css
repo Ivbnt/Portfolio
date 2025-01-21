@@ -74,3 +74,108 @@
   .menu-link:hover .hidden span:nth-child(7) {
     animation-delay: 0.7s;
   }
+
+
+/* Animation programmation*/
+
+/* Container to hide overflow */
+#switch {
+  position: relative;
+  height: 4vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Styling each span */
+#switch span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: end;
+  animation: slide 10s infinite;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Animation for the sliding effect */
+@keyframes slide {
+  0% {
+      opacity: 0;
+      transform: translateY(100%);
+  }
+  10% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  20% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  30% {
+      opacity: 0;
+      transform: translateY(-100%);
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(-100%);
+  }
+}
+
+/* Assign delays to each span for staggered animation */
+#switch span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+#switch span:nth-child(2) {
+  animation-delay: 2s;
+}
+
+#switch span:nth-child(3) {
+  animation-delay: 4s;
+}
+
+#switch span:nth-child(4) {
+  animation-delay: 6s;
+}
+
+#switch span:nth-child(5) {
+  animation-delay: 8s;
+}
+
+/* Font variations */
+.font-1 {
+  font-family: 'Pacifico', sans-serif;
+}
+.font-2 {
+  font-family: 'Lobster', serif;
+}
+.font-3 {
+  font-family: 'Dancing Script', monospace;
+}
+.font-4 {
+  font-family: 'Caveat ', sans-serif;
+}
+.font-5 {
+  font-family: 'Poiret One', sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  #switch {
+      height: 8vw;
+  }
+  #switch span {
+      font-size: 8vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  #switch {
+      height: 6vw;
+  }
+  #switch span {
+      font-size: 6vw;
+  }
+}

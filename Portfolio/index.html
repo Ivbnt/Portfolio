@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="index.css">
 </head>
-<body>
-    <header class="w-full h-screen  " >
-        <div id="navbar">
+<body class="">
+    <header class="w-full h-screen relative flex items-center justify-center">
+        <div id="navbar" class="absolute w-full top-0 left-0 z-10">
             <div id="quickbar" class="max-w-7xl mx-auto px-20 py-20 flex justify-between items-center h-16">
+                <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="tracking-[2px] font-bold uppercase"> Ivane</a>
+                    <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                    Ivane
+                    </a>
                 </div>
-                <div>
-                     <!-- Menu Principal -->
-                    <div id="menu" class="flex">
-                        <ul class="flex space-x-6 tracking-[2px] ">
-                            <li>
-                                <a href="index.html" class="menu-link ">
+                <!-- Menu -->
+                <div id="menu" class="flex">
+                    <ul class="flex space-x-6 tracking-[2px] items-center">
+                        <li>
+                            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
                                     <span>H</span>
                                     <span>O</span>
@@ -32,10 +34,10 @@
                                     <span>M</span>
                                     <span>E</span>
                                 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="about.html" class="menu-link ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
                                     <span>A</span>
                                     <span>B</span>
@@ -50,10 +52,10 @@
                                     <span>U</span>
                                     <span>T</span>
                                 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="work.html" class="menu-link ">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="work.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
                                     <span>W</span>
                                     <span>O</span>
@@ -66,10 +68,10 @@
                                     <span>R</span>
                                     <span>K</span>
                                 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact.html" class="menu-link">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
                                     <span>C</span>
                                     <span>O</span>
@@ -88,52 +90,45 @@
                                     <span>C</span>
                                     <span>T</span>
                                 </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div>
-            <div id="box-name" class="absolute inset-0 pointer-events-none flex flex-col justify-center px-20 z-0">
-                <div id="name" class="leading-[0.9] font-bold uppercase relative text-[10vw]">
-                    <span class="block ">
-                        <span>I</span>
-                        <span>V</span>
-                        <span>A</span>
-                        <span>N</span>
-                        <span>E</span>
-                        <span>,</span>
+        <div id="box-name" class="w-full top-0 left-0">
+            <div class=" flex flex-col max-w-7xl mx-auto px-20 py-20">
+                <div class="text-[5vw] font-bold uppercase leading-[0.9] mb-4 ml-0 pl-0 flex justify-center">
+                    Developer,
+                </div>
+                <div id="switch" class="flex justify-end w-10/12 ">
+                    <span class="text-[4vw] font-1">
+                        JavaScript
                     </span>
-                    <br>
-                    <span class="font-cursive text-[3vw] absolute top-[60%] right-0 normal-case">
-                        <span>B</span>
-                        <span>O</span>
-                        <span>N</span>
-                        <span>N</span>
-                        <span>E</span>
-                        <span>T</span>
+                    <span class="text-[4vw] hidden font-2">
+                        Python
+                    </span>
+                    <span class="text-[4vw] hidden font-3">
+                        Java
+                    </span>
+                    <span class="text-[4vw] hidden font-4">
+                        C#
+                    </span>
+                    <span class="text-[4vw] hidden font-5">
+                        PHP
                     </span>
                 </div>
-                <div class="absolute bottom-16 left-20 text-gray-300 uppercase tracking-wider text-base">
-                    <span>Webdesigner</span>
-                    <span class="mx-1">&</span>
-                    <span>Developer</span>
-                </div>
-            </div>
+            </div>   
         </div>
     </header>
-    <main>
-        <h1></h1>
-        <section>
-            <div>
-
-            </div>    
-        </section>
+    <main class="p-8">
+        <h1 class="text-2xl font-bold mb-4">Contenu Principal</h1>
+        <p>Votre contenu, visible en scrollant vers le bas.</p>
     </main>
-    <footer>
-
+    <footer class="p-4 border-t border-gray-300  text-center">
+        <p>Footer</p>
     </footer>
+
+  <script src="index.js"></script>
 </body>
 </html>
