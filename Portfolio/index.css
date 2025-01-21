@@ -1,0 +1,76 @@
+                            /* ANIMATION NAVBAR*/
+ .menu-link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .menu-link .original,
+  .menu-link .hidden {
+    display: flex;
+  }
+
+  .menu-link .original {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .menu-link .hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    flex-direction: row;
+  }
+
+  /* Animation lors du hover */
+  .menu-link:hover .original {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  .menu-link:hover .hidden {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animation lettre par lettre */
+  .menu-link:hover .hidden span {
+    animation: fadeInUp 0.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* delai pour chaque lettre */
+  .menu-link:hover .hidden span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .menu-link:hover .hidden span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .menu-link:hover .hidden span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .menu-link:hover .hidden span:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .menu-link:hover .hidden span:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .menu-link:hover .hidden span:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  .menu-link:hover .hidden span:nth-child(7) {
+    animation-delay: 0.7s;
+  }
