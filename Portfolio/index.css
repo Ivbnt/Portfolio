@@ -85,6 +85,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /* Styling each span */
@@ -92,7 +93,6 @@
   display: block;
   position: absolute;
   width: 100%;
-  text-align: end;
   animation: slide 10s infinite;
   opacity: 0;
   transform: translateY(100%);
@@ -178,4 +178,32 @@
   #switch span {
       font-size: 6vw;
   }
+}
+
+/* WORK */
+
+#Work {
+  position: relative; /* Extended height to simulate scrolling through section */
+  z-index: 5;
+}
+
+#Work h1 {
+  position: sticky;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+#Work h1.hide {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+
+/* travaux lié au work */
+#work2 {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+#work2.visible {
+  opacity: 1;
 }
