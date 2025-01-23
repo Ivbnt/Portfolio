@@ -200,10 +200,3 @@
 
 
 /* travaux lié au work */
-#work2 {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-#work2.visible {
-  opacity: 1;
-}

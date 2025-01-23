@@ -6,6 +6,44 @@
   <title>Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="index.css">
+  <style>
+     /* ============================
+       WORK1 et WORK2 en "sticky"
+       ============================ */
+       .panel {
+      position: sticky;
+      top: 0;
+      width: 100%;
+
+    }
+
+    #work1 {
+      background: #2c3e50; /* bleu foncé */
+      z-index: 10;          /* en dessous */
+    }
+
+    #work2 {
+      background: #c0392b; /* rouge */
+      z-index: 20;          /* au-dessus */
+      /* Au départ : Work2 est caché en bas => translateY(100%) */
+      transform: translateY(100%);
+      /* On veut une transition plus "directe" ? 
+         Ici on n'ajoute PAS de transition, car on veut que 
+         le mouvement soit piloté en temps réel par le scroll.
+         Si vous mettez transition, ça "adoucirait" mais risquerait 
+         de créer un effet de retard. 
+      */
+    }
+
+    /* Juste pour avoir un "après" qui continue le scroll */
+    .after {
+      height: 100vh; 
+      background: #999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
     <header class=" h-screen relative flex items-center flex-col justify-center">
@@ -134,11 +172,11 @@
         </div>
     </header>
     <main class="p-8">
-        <section id="carrouseel" class="">
-            <div id="Work" class="flex justify-center items-center h-screen ">
-                <h1 class="text-[10vw] tracking-[2vw]">WORK</h1>
-            </div>
-            <section id="work1" class="h-screen bg-red-100 flex items-center justify-center">
+        <div id="Work" class="flex justify-center items-center h-screen ">
+            <h1 class="text-[10vw] tracking-[2vw]">WORK</h1>
+        </div>
+        <div class="scroll-container " id="scrollContainer">
+            <section id="work1" class="panel h-screen bg-red-100 flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
                     <div id="case1" class=" aspect-square flex justify-center">
                         <h6 class="font-bold">#case_01</h6>
@@ -161,7 +199,7 @@
                     </div>
                 </div>
             </section>
-            <section id="work2" class="h-screen bg-green-100 flex items-center justify-center">
+            <section id="work2" class="panel h-screen bg-red-100 flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
                     <div id="case2" class=" aspect-square flex justify-center">
                         <h6 class="font-bold">#case_01</h6>
@@ -184,8 +222,8 @@
                     </div>
                 </div>
             </section>
-        </section>
-        <section id="" class="w-full">
+          </div>
+        <section id="" class="after w-full">
             <h1>profil</h1>
         </section>
     </main>
@@ -193,6 +231,60 @@
         <p>Footer</p>
     </footer>
 
+    <script>
+        // 1) Sélectionner nos sections
+    const work2 = document.getElementById("work2");
+    const container = document.getElementById("scrollContainer");
+
+    // 2) Calcule la zone "utile" de défilement 
+    //    pour animer l'apparition progressive de Work2.
+    //    - Début = le haut de .scroll-container 
+    //    - Fin = le bas de .scroll-container 
+    //      (ou un peu moins, selon l'effet souhaité)
+
+    // On attend le "DOMContentLoaded" ou "load" pour que
+    // offsetTop et offsetHeight soient corrects (si images, etc.)
+    window.addEventListener('DOMContentLoaded', () => {
+      setupScrolling();
+    });
+
+    function setupScrolling() {
+      // position absolue du conteneur par rapport au document
+      const containerStart = container.offsetTop;
+      // hauteur du conteneur
+      const containerHeight = container.offsetHeight;
+
+      // calcul de la zone de défilement 
+      // (on veut que l'animation se fasse sur la hauteur de 1 écran 
+      //  dans ce cas. On pourrait le faire sur tout containerHeight 
+      //  si on veut. À adapter.)
+      const windowH = window.innerHeight;
+      // On peut décider que l'animation se fasse 
+      // entre containerStart et containerStart + windowH
+      // de sorte que sur la 2e moitié, Work2 soit entièrement affiché.
+
+      const startAnim = containerStart;          // début animation
+      const endAnim   = containerStart + windowH; // fin animation
+
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Calculer la progression entre 0 et 1
+        let progress = (scrollY - startAnim) / (endAnim - startAnim);
+
+        // Clamper entre 0 et 1 pour ne pas dépasser
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+
+        // On veut qu'à progress=0 => translateY(100%) (invisible en bas)
+        // et à progress=1 => translateY(0%) (complètement visible).
+        const translateValue = 100 - (100 * progress);
+
+        // Appliquer le transform
+        work2.style.transform = `translateY(${translateValue}%)`;
+      });
+    }
+    </script>
   <script src="index.js"></script>
 </body>
 </html>
