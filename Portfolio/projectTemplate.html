@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Details - Ivane</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="index.css">
   <style>
     body {
       background-color: #FAF3E0; /* Crème Premium */
@@ -21,30 +22,93 @@
 <body class="text-gray-900">
 
   <!-- Navbar -->
-  <header id="navbar" class="w-full fixed top-0 left-0 z-10 bg-[#FAF3E0] border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-20 py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <a href="index.html" class="tracking-[2px] font-bold uppercase">
-          Ivane
-        </a>
-      </div>
-      <!-- Menu -->
-      <div id="menu" class="flex">
-        <ul class="flex space-x-6 tracking-[2px] items-center">
-          <li>
-            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Home</a>
-          </li>
-          <li>
-            <a href="projects.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Projects</a>
-          </li>
-          <li>
-            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Contact</a>
-          </li>
-        </ul>
-      </div>
+  <div id="navbar" class="absolute w-full top-0 left-0 z-10">
+    <div id="quickbar" class="max-w-7xl mx-auto px-20 flex justify-between items-center h-16 border-b border-gray-200">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+            <a href="index.html" class="tracking-[2px] font-bold uppercase">
+            Ivane
+            </a>
+        </div>
+        <!-- Menu -->
+        <div id="menu" class="flex">
+            <ul class="flex space-x-6 tracking-[2px] items-center">
+                <li>
+                    <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                        <span class="original">
+                            <span>H</span>
+                            <span>O</span>
+                            <span>M</span>
+                            <span>E</span>
+                        </span>
+                        <span class="hidden">
+                            <span>H</span>
+                            <span>O</span>
+                            <span>M</span>
+                            <span>E</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                        <span class="original">
+                            <span>A</span>
+                            <span>B</span>
+                            <span>O</span>
+                            <span>U</span>
+                            <span>T</span>
+                        </span>
+                        <span class="hidden">
+                            <span>A</span>
+                            <span>B</span>
+                            <span>O</span>
+                            <span>U</span>
+                            <span>T</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                        <span class="original">
+                            <span>W</span>
+                            <span>O</span>
+                            <span>R</span>
+                            <span>K</span>
+                        </span>
+                        <span class="hidden">
+                            <span>W</span>
+                            <span>O</span>
+                            <span>R</span>
+                            <span>K</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                        <span class="original">
+                            <span>C</span>
+                            <span>O</span>
+                            <span>N</span>
+                            <span>T</span>
+                            <span>A</span>
+                            <span>C</span>
+                            <span>T</span>
+                        </span>
+                        <span class="hidden">
+                            <span>C</span>
+                            <span>O</span>
+                            <span>N</span>
+                            <span>T</span>
+                            <span>A</span>
+                            <span>C</span>
+                            <span>T</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </header>
+</div>
 
   <!-- Conteneur Principal -->
   <div class="min-h-screen pt-28 px-8 py-20 max-w-7xl mx-auto">
