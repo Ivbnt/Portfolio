@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Ivane</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #FAF3E0; /* Crème Premium */
+    }
+    .search-bar {
+      transition: box-shadow 0.3s ease;
+    }
+    .search-bar:focus {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+
+  <!-- Navbar -->
+  <header id="navbar" class="w-full top-0 left-0 z-10 bg-[#FAF3E0] border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-20 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="index.html" class="tracking-[2px] font-bold uppercase">
+          Ivane
+        </a>
+      </div>
+      <!-- Menu -->
+      <div id="menu" class="flex">
+        <ul class="flex space-x-6 tracking-[2px] items-center">
+          <li>
+            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Home</a>
+          </li>
+          <li>
+            <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">About</a>
+          </li>
+          <li>
+            <a href="work.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Work</a>
+          </li>
+          <li>
+            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none hover:underline">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteneur Principal -->
+  <div class="min-h-screen flex flex-col items-center px-8 py-20 pt-28">
+
+    <!-- Titre de la page -->
+    <div class="text-center mb-12">
+      <h1 class="text-6xl font-extrabold uppercase tracking-wide">
+        My Projects
+      </h1>
+      <p class="text-lg text-gray-700 mt-4">
+        Explore a collection of my selected works, filter by technology, and dive into the details.
+      </p>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="mb-12 w-full max-w-3xl">
+      <input 
+        type="text" 
+        id="search" 
+        placeholder="Search by technology (e.g., Java, Python, JavaScript)" 
+        class="search-bar w-full px-6 py-4 text-lg rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
+        oninput="filterProjects()"
+      />
+    </div>
+
+    <!-- Grille de projets -->
+    <div id="projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+      <!-- Projet 1 -->
+      <div class="project bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-all duration-300" data-tech="JavaScript">
+        <img src="img/nature.jpg" alt="Project Image" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-2xl font-bold mb-2">Project 1</h3>
+          <p class="text-gray-700">A project using JavaScript for dynamic UI/UX.</p>
+          <p class="text-sm text-gray-500 mt-2">Technologies: JavaScript, HTML, CSS</p>
+          <a href="#" class="block mt-4 text-blue-600 font-semibold hover:underline">View More</a>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="project bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-all duration-300" data-tech="Python">
+        <img src="img/nature.jpg" alt="Project Image" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-2xl font-bold mb-2">Project 2</h3>
+          <p class="text-gray-700">A Python-based automation script.</p>
+          <p class="text-sm text-gray-500 mt-2">Technologies: Python, Flask</p>
+          <a href="#" class="block mt-4 text-blue-600 font-semibold hover:underline">View More</a>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="project bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transform transition-all duration-300" data-tech="Java">
+        <img src="img/nature.jpg" alt="Project Image" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-2xl font-bold mb-2">Project 3</h3>
+          <p class="text-gray-700">A Java project for backend APIs.</p>
+          <p class="text-sm text-gray-500 mt-2">Technologies: Java, Spring Boot</p>
+          <a href="#" class="block mt-4 text-blue-600 font-semibold hover:underline">View More</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 py-6 mt-12">
+    Design & Development by Ivane Bonnet
+  </footer>
+
+  <script>
+    // Fonction pour filtrer les projets par technologie
+    function filterProjects() {
+      const searchQuery = document.getElementById('search').value.toLowerCase();
+      const projects = document.querySelectorAll('.project');
+
+      projects.forEach(project => {
+        const tech = project.getAttribute('data-tech').toLowerCase();
+        if (tech.includes(searchQuery)) {
+          project.style.display = 'block';
+        } else {
+          project.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

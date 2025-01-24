@@ -180,6 +180,8 @@
   }
 }
 
+
+
 /* WORK */
 
 #Work {
@@ -253,3 +255,16 @@
 /* Assurer que les lettres animées sont visibles */
 .letter.animated {
   opacity: 1;}
+
+
+
+  /* bouton circle */
+
+  /* Animation pour le bouton */
+  .btn-circle:hover {
+    transform: scale(1.1); /* Agrandissement du bouton */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Ombre plus visible */
+  }
+  .btn-circle {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition fluide */
+  }

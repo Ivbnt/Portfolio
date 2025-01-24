@@ -1,3 +1,12 @@
+// SCROLLL //
+
+
+
+
+
+  /// WORK BUG ///
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const hackerLetters = document.querySelectorAll('.hacker-letter');
     const randomLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -57,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       rootMargin: '0px',
       threshold: 0.5 // Trigger when 50% of the h1 is visible
     };
+
     
     const observerCallback = (entries, observer) => {
       entries.forEach(entry => {
@@ -65,9 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     };
+
     
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
     const target = document.querySelector('#Work h1');
+    //const target2 = document.querySelector('#me');
+
     observer.observe(target);
+    //observer.observe(target2);
   });
