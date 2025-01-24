@@ -20,11 +20,27 @@
     #work1 {
       background: #2c3e50; /* bleu foncé */
       z-index: 10;          /* en dessous */
+      transform: translateY(100%);
+
+      
     }
 
     #work2 {
       background: #c0392b; /* rouge */
       z-index: 20;          /* au-dessus */
+      /* Au départ : Work2 est caché en bas => translateY(100%) */
+      transform: translateY(100%);
+      /* On veut une transition plus "directe" ? 
+         Ici on n'ajoute PAS de transition, car on veut que 
+         le mouvement soit piloté en temps réel par le scroll.
+         Si vous mettez transition, ça "adoucirait" mais risquerait 
+         de créer un effet de retard. 
+      */
+    }
+
+    #work3 {
+      background: #268038; /* rouge */
+      z-index: 30;          /* au-dessus */
       /* Au départ : Work2 est caché en bas => translateY(100%) */
       transform: translateY(100%);
       /* On veut une transition plus "directe" ? 
@@ -134,15 +150,15 @@
                 </div>
             </div>
         </div>
-        <div id="box-name" class="w-full flex justify-center items-center">
-            <div class=" flex flex-col justify-center text-center mx-auto px-20 py-20 ">
-                <div class=" pb-4 flex justify-center ml- text-[5vw] font-bold uppercase  mb-4 ml-0 pl-0  tracking-[4vw]">
-                    Ivane
+        <div id="box-name" class="w-full ">
+            <div class="  flex-col  text-center mx-auto px-32 py-20 ">
+                <div class=" font-geologica flex items-center  text-[5vw] font-bold uppercase  mb-4 ml-5 ml-0 pl-0  tracking-[1vh]">
+                    Design to
                 </div>
-                <div class="  flex justify-center ml- text-[5vw] font-bold uppercase  mb-4 ml-0 pl-0  tracking-[4vw]">
-                    Bonnet
+                <div class=" font-geologica flex items-center  text-[5vw] font-bold uppercase  mb-4 ml-5 ml-0 pl-0  tracking-[1vh]">
+                    development
                 </div>
-                
+                <!--
                 <div id="switch" class="flex justify-center items-center w-full  ">
                     <span class="text-[3vw] font-1">
                         JavaScript
@@ -160,7 +176,7 @@
                         PHP
                     </span>
                 </div>
-                
+                -->
             </div>   
         </div>
         <div id="features" class="w-full absolute bottom-8 left-0 text-center">
@@ -172,10 +188,18 @@
         </div>
     </header>
     <main class="p-8">
-        <div id="Work" class="flex justify-center items-center h-screen ">
-            <h1 class="text-[10vw] tracking-[2vw]">WORK</h1>
-        </div>
+
+        
         <div class="scroll-container " id="scrollContainer">
+            <div id="Work" class="panel z-5 h-screen m-0 p-0 pt-16">
+                <h1 class="sticky top-0 mx-auto text-center text-[10vw] pt-16  transition-all duration-300 hacker-effect">
+                    <span class="letter animated">W</span>
+                    <span class="letter animated">O</span>
+                    <span class="letter animated">R</span>
+                    <span class="letter hacker-letter">K<span class="random-char"></span></span>
+                    <span class="letter hacker-letter">S<span class="random-char"></span></span>
+                </h1>
+            </div>
             <section id="work1" class="panel h-screen bg-red-100 flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
                     <div id="case1" class=" aspect-square flex justify-center">
@@ -202,7 +226,7 @@
             <section id="work2" class="panel h-screen bg-red-100 flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
                     <div id="case2" class=" aspect-square flex justify-center">
-                        <h6 class="font-bold">#case_01</h6>
+                        <h6 class="font-bold">#case_02</h6>
                     </div>
                     
                     <div id="image2" class="bg-green-300 aspect-square flex items-center justify-center">
@@ -210,6 +234,29 @@
                     </div>
                     
                     <div id="title2" class=" flex flex-col justify-center p-4  aspect-square">
+                        <div class="flex">
+                            <h1 class="font-geologica text-medium-size text-black font-[600] uppercase scramble-text">Titre</h1>
+                        </div>
+                        <div class="flex">
+                            <p class=" flex items-center font-geologica text-small-size text-black font-[400] scramble-text">Description</p>
+                        </div>
+                        <div class="">
+                            <a href="" class="inline-block font-geologica text-base-size text-black font-[400] mt-[1rem]">view more</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="work3" class="panel h-screen bg-red-100 flex items-center justify-center">
+                <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
+                    <div id="case3" class=" aspect-square flex justify-center">
+                        <h6 class="font-bold">#case_03</h6>
+                    </div>
+                    
+                    <div id="image3" class="bg-green-300 aspect-square flex items-center justify-center">
+                        <img src="img/nature.jpg" alt="" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div id="title3" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
                             <h1 class="font-geologica text-medium-size text-black font-[600] uppercase scramble-text">Titre</h1>
                         </div>
@@ -233,7 +280,9 @@
 
     <script>
         // 1) Sélectionner nos sections
+    const work1 = document.getElementById("work1");
     const work2 = document.getElementById("work2");
+    const work3 = document.getElementById("work3");
     const container = document.getElementById("scrollContainer");
 
     // 2) Calcule la zone "utile" de défilement 
@@ -281,7 +330,9 @@
         const translateValue = 100 - (100 * progress);
 
         // Appliquer le transform
+        work1.style.transform = `translateY(${translateValue}%)`;
         work2.style.transform = `translateY(${translateValue}%)`;
+        work3.style.transform = `translateY(${translateValue}%)`;
       });
     }
     </script>

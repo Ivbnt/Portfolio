@@ -183,7 +183,7 @@
 /* WORK */
 
 #Work {
-  position: relative; /* Extended height to simulate scrolling through section */
+ /* Extended height to simulate scrolling through section */
   z-index: 5;
 }
 
@@ -199,4 +199,57 @@
 }
 
 
-/* travaux lié au work */
+/* Lié au work */
+ /* Utiliser une police monospace pour des largeurs de lettres constantes */
+ .hacker-effect {
+  font-family: 'geologica', monospace;
+}
+
+/* Animation pour l'apparition progressive */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animation "hacker" : alternance d'opacité sans déplacement */
+@keyframes hacker {
+  0%, 100% { opacity: 1; }
+  20%, 40%, 60%, 80% { opacity: 0; }
+}
+
+/* Appliquer l'animation de fadeIn aux lettres */
+.letter {
+  opacity: 0; /* Initialement invisible */
+  animation: fadeIn 0.5s forwards;
+  animation-delay: 0s;
+}
+
+/* Appliquer l'animation "hacker" lorsque la classe active est ajoutée */
+.hacker-letter.active .random-char {
+  animation: hacker 0.5s ease-in-out forwards;
+  opacity: 1;
+}
+
+/* Assurer que chaque lettre a une position relative */
+.letter {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style pour les caractères aléatoires pendant l'animation "hacker" */
+.random-char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  color: rgb(6,7,6);
+  pointer-events: none;
+  font-weight: bold;
+}
+
+/* Assurer que les lettres animées sont visibles */
+.letter.animated {
+  opacity: 1;}
