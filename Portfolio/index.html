@@ -18,7 +18,7 @@
     }
 
     #work1 {
-      background: #2c3e50; /* bleu foncé */
+      background: #0A2740; /* bleu foncé */
       z-index: 10;          /* en dessous */
       transform: translateY(100%);
 
@@ -26,7 +26,7 @@
     }
 
     #work2 {
-      background: #c0392b; /* rouge */
+      background: #195a26; /* rouge */
       z-index: 20;          /* au-dessus */
       /* Au départ : Work2 est caché en bas => translateY(100%) */
       transform: translateY(100%);
@@ -39,7 +39,7 @@
     }
 
     #work3 {
-      background: #195a26; /* rouge */
+      background: #495057; /* rouge */
       z-index: 30;          /* au-dessus */
       /* Au départ : Work2 est caché en bas => translateY(100%) */
       transform: translateY(100%);
@@ -183,41 +183,41 @@
         </div>
     </header>
     <main >
-      <div class="bg-[#1C1C1C] h-screen relative">
-          <div class="flex flex-col md:flex-row items-center text-white max-w-4xl mx-auto gap-12 h-full justify-center ">
+        <div class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative">
+            <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-16">
               <div class="flex justify-center">
                 <img 
-                  src="" 
+                  src="img/ivanePhoto.JPG" 
                   alt="Photo Ivane Bonnet" 
-                  class="w-64 h-64 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
+                  class="w-80 h-80 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
                 />
               </div>
           
               <div class="text-center md:text-left">
-                  <h1 id="me" class="text-4xl md:text-3xl font-bold uppercase mb-4 tracking-[2px]">
-                    Ivane Bonnet
-                  </h1>
+                <h1 id="me" class="text-5xl md:text-4xl font-bold uppercase mb-6 tracking-[3px]">
+                  Ivane Bonnet
+                </h1>
           
-                  <h2 class="text-lg font-bold mb-2">
-                    About
-                  </h2>
-                  <p class="leading-relaxed mb-4">
-                    Description.
-                  </p>
-                  <p class="leading-relaxed mb-6 font-semibold tracking-wide">
-                    Handling graphic design and coding at a design company, implementing
-                    solutions that balance functionality with visual appeal.
-                  </p>
+                <h2 class="text-2xl font-bold mb-4">
+                  About
+                </h2>
+                <p class="text-lg leading-relaxed mb-6">
+                  Description.
+                </p>
+                <p class="text-lg leading-relaxed mb-8 font-semibold tracking-wide">
+                  Handling graphic design and coding at a design company, implementing
+                  solutions that balance functionality with visual appeal.
+                </p>
           
-                  <a 
-                    href="about.html" 
-                    class="inline-block px-6 py-3 rounded bg-black text-white font-semibold hover:bg-gray-700 transition-colors duration-200"
-                  >
-                    Learn More
-                  </a>
+                <a 
+                  href="about.html" 
+                  class="inline-block px-8 py-4 rounded bg-black text-white font-semibold text-lg hover:bg-gray-700 transition-colors duration-200"
+                >
+                  Learn More
+                </a>
               </div>
+            </div>
           </div>
-      </div>
       
         
         <div class="scroll-container bg-[#1C1C1C] text-white " id="scrollContainer">
@@ -231,25 +231,25 @@
                     <span class="letter hacker-letter">S<span class="random-char"></span></span>
                 </h1>
             </div>
-            <section id="work1" class="panel h-screen bg-red-100 flex items-center justify-center">
+            <section id="work1" class="panel h-screen bg-black flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
                     <div id="case1" class=" aspect-square flex justify-center">
                         <h6 class="font-bold">#case_01</h6>
                     </div>
                     
-                    <div id="image1" class="bg-green-300 aspect-square flex items-center justify-center">
-                        <img src="img/nature.jpg" alt="" class="w-full h-full object-cover">
+                    <div id="image1" class=" aspect-square flex items-center justify-center">
+                        <img src="img/cosmojet.png" alt="" class="w-full h-full object-cover">
                     </div>
                     
                     <div id="title1" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-medium-size text-black font-[600] uppercase scramble-text">Titre</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Cosmojet</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size text-black font-[400] scramble-text">Description</p>
+                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Creation of a front-end website, in a responsive manner, for the creation of a product or service.</p>
                         </div>
                         <div class="">
-                            <a href="" class="inline-block font-geologica text-base-size text-black font-[400] mt-[1rem]">view more</a>
+                            <a href="cosmojet.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
                         </div>
                     </div>
                 </div>
@@ -260,19 +260,19 @@
                         <h6 class="font-bold">#case_02</h6>
                     </div>
                     
-                    <div id="image2" class="bg-green-300 aspect-square flex items-center justify-center">
-                        <img src="img/nature.jpg" alt="" class="w-full h-full object-cover">
+                    <div id="image2" class=" aspect-square flex items-center justify-center">
+                        <img src="img/towa.png" alt="" class="w-full h-full object-cover">
                     </div>
                     
                     <div id="title2" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-medium-size text-black font-[600] uppercase scramble-text">Titre</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Towa</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size text-black font-[400] scramble-text">Description</p>
+                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Java project on the development of rules and AI for a board game.</p>
                         </div>
                         <div class="">
-                            <a href="" class="inline-block font-geologica text-base-size text-black font-[400] mt-[1rem]">view more</a>
+                            <a href="towa.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
                         </div>
                     </div>
                 </div>
@@ -283,19 +283,19 @@
                         <h6 class="font-bold">#case_03</h6>
                     </div>
                     
-                    <div id="image3" class="bg-green-300 aspect-square flex items-center justify-center">
-                        <img src="img/nature.jpg" alt="" class="w-full h-full object-cover">
+                    <div id="image3" class="aspect-square flex items-center justify-center">
+                        <img src="img/Tournoi.png" alt="" class="w-full h-full object-scale-down">
                     </div>
                     
                     <div id="title3" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-medium-size text-black font-[600] uppercase scramble-text">Titre</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Robot tournament</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size text-black font-[400] scramble-text">Description</p>
+                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Full stack creation of a website which allows you to create and manage a robot tournament organization.</p>
                         </div>
                         <div class="">
-                            <a href="" class="inline-block font-geologica text-base-size text-black font-[400] mt-[1rem]">view more</a>
+                            <a href="robotTournament.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
                         </div>
                     </div>
                 </div>
