@@ -19,95 +19,74 @@
 <body class="bg-[#D6D6D6]">
 
   <!-- Navbar -->
-  <header >
-    <div id="navbar" class="absolute w-full top-0 left-0 z-10 pb-32">
-      <div id="quickbar" class="max-w-7xl mx-auto px-20 py-20 flex justify-between items-center h-16">
-          <!-- Logo -->
-          <div class="flex-shrink-0">
-              <a href="index.html" class="tracking-[2px] font-bold uppercase">
-              Ivane
-              </a>
-          </div>
-          <!-- Menu -->
-          <div id="menu" class="flex">
-              <ul class="flex space-x-6 tracking-[2px] items-center">
-                  <li>
-                      <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
-                          <span class="original">
-                              <span>H</span>
-                              <span>O</span>
-                              <span>M</span>
-                              <span>E</span>
-                          </span>
-                          <span class="hidden">
-                              <span>H</span>
-                              <span>O</span>
-                              <span>M</span>
-                              <span>E</span>
-                          </span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
-                          <span class="original">
-                              <span>A</span>
-                              <span>B</span>
-                              <span>O</span>
-                              <span>U</span>
-                              <span>T</span>
-                          </span>
-                          <span class="hidden">
-                              <span>A</span>
-                              <span>B</span>
-                              <span>O</span>
-                              <span>U</span>
-                              <span>T</span>
-                          </span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
-                          <span class="original">
-                              <span>W</span>
-                              <span>O</span>
-                              <span>R</span>
-                              <span>K</span>
-                          </span>
-                          <span class="hidden">
-                              <span>W</span>
-                              <span>O</span>
-                              <span>R</span>
-                              <span>K</span>
-                          </span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
-                          <span class="original">
-                              <span>C</span>
-                              <span>O</span>
-                              <span>N</span>
-                              <span>T</span>
-                              <span>A</span>
-                              <span>C</span>
-                              <span>T</span>
-                          </span>
-                          <span class="hidden">
-                              <span>C</span>
-                              <span>O</span>
-                              <span>N</span>
-                              <span>T</span>
-                              <span>A</span>
-                              <span>C</span>
-                              <span>T</span>
-                          </span>
-                      </a>
-                  </li>
-              </ul>
-          </div>
+<header>
+  <div id="navbar" class="absolute w-full top-0 left-0 z-10 pb-32">
+    <div id="quickbar" class="max-w-7xl mx-auto px-6 sm:px-20 py-6 sm:py-20 flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="index.html" class="tracking-[2px] font-bold uppercase">
+          Ivane
+        </a>
       </div>
+      <!-- Burger Icon -->
+      <button id="burger" class="sm:hidden flex flex-col justify-between w-6 h-6">
+        <span class="w-full h-[2px] bg-black"></span>
+        <span class="w-full h-[2px] bg-black"></span>
+        <span class="w-full h-[2px] bg-black"></span>
+      </button>
+      <!-- Menu -->
+      <div id="menu" class="hidden sm:flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-6 tracking-[2px] items-center">
+        <ul class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0">
+          <li>
+            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+              <span class="original">
+                <span>H</span>
+                <span>O</span>
+                <span>M</span>
+                <span>E</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+              <span class="original">
+                <span>A</span>
+                <span>B</span>
+                <span>O</span>
+                <span>U</span>
+                <span>T</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+              <span class="original">
+                <span>W</span>
+                <span>O</span>
+                <span>R</span>
+                <span>K</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+              <span class="original">
+                <span>C</span>
+                <span>O</span>
+                <span>N</span>
+                <span>T</span>
+                <span>A</span>
+                <span>C</span>
+                <span>T</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  </header>
+</header>
+
 
   <!-- Conteneur Principal -->
   <div class="min-h-screen pt-64 px-8 py-20 max-w-7xl mx-auto">
@@ -123,7 +102,7 @@
       <!-- Image ou photo -->
       <div class="flex justify-center">
         <img 
-          src="img/ivanePhoto.JPG" 
+          src="img/" 
           alt="Profile Picture" 
           class="profile-pic rounded-full w-64 h-64 object-cover shadow-lg"
         />

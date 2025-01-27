@@ -56,87 +56,63 @@
   </style>
 </head>
 <body class="bg-[#D6D6D6]">
-    <header id="top" class=" h-screen relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+    <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
         <div id="navbar" class="absolute w-full top-0 left-0 z-10">
-            <div id="quickbar" class="max-w-7xl mx-auto px-20 py-20 flex justify-between items-center h-16">
+            <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="index.html" class="tracking-[2px] font-bold uppercase">
-                    Ivane
+                        Ivane
                     </a>
                 </div>
-                <!-- Menu -->
-                <div id="menu" class="flex">
+                <!-- Icône du burger, visible uniquement sur petits écrans -->
+                <div class="md:hidden">
+                    <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Menu principal, caché sur petits écrans -->
+                <div id="menu" class="hidden md:flex">
                     <ul class="flex space-x-6 tracking-[2px] items-center">
                         <li>
                             <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
-                                    <span>H</span>
-                                    <span>O</span>
-                                    <span>M</span>
-                                    <span>E</span>
+                                    <span>H</span><span>O</span><span>M</span><span>E</span>
                                 </span>
                                 <span class="hidden">
-                                    <span>H</span>
-                                    <span>O</span>
-                                    <span>M</span>
-                                    <span>E</span>
+                                    <span>H</span><span>O</span><span>M</span><span>E</span>
                                 </span>
                             </a>
                         </li>
                         <li>
                             <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
-                                    <span>A</span>
-                                    <span>B</span>
-                                    <span>O</span>
-                                    <span>U</span>
-                                    <span>T</span>
+                                    <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
                                 </span>
                                 <span class="hidden">
-                                    <span>A</span>
-                                    <span>B</span>
-                                    <span>O</span>
-                                    <span>U</span>
-                                    <span>T</span>
+                                    <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
                                 </span>
                             </a>
                         </li>
                         <li>
                             <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
-                                    <span>W</span>
-                                    <span>O</span>
-                                    <span>R</span>
-                                    <span>K</span>
+                                    <span>W</span><span>O</span><span>R</span><span>K</span>
                                 </span>
                                 <span class="hidden">
-                                    <span>W</span>
-                                    <span>O</span>
-                                    <span>R</span>
-                                    <span>K</span>
+                                    <span>W</span><span>O</span><span>R</span><span>K</span>
                                 </span>
                             </a>
                         </li>
                         <li>
                             <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
                                 <span class="original">
-                                    <span>C</span>
-                                    <span>O</span>
-                                    <span>N</span>
-                                    <span>T</span>
-                                    <span>A</span>
-                                    <span>C</span>
-                                    <span>T</span>
+                                    <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
                                 </span>
                                 <span class="hidden">
-                                    <span>C</span>
-                                    <span>O</span>
-                                    <span>N</span>
-                                    <span>T</span>
-                                    <span>A</span>
-                                    <span>C</span>
-                                    <span>T</span>
+                                    <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
                                 </span>
                             </a>
                         </li>
@@ -144,56 +120,114 @@
                 </div>
             </div>
         </div>
-        <div id="box-name" class="w-full ">
-            <div class="  flex-col  text-center mx-auto px-64 py-20 ">
-                <div class=" font-geologica flex items-center  text-[5vw] font-bold uppercase  mb-4 ml-5 ml-0 pl-0  tracking-[1vh]">
-                    Design to
-                </div>
-                <div id="dev" class=" font-geologica flex items-center  text-[5vw] font-bold uppercase  mb-4 ml-5 ml-0 pl-0  tracking-[1vh]">
+        
+        <!-- Menu latéral -->
+        <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
+            <div class="p-4">
+                <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <ul class="flex flex-col space-y-4">
+                    <li>
+                        <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-                    development
+        <!-- Overlay avec flou -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+
+        <div id="box-name" class="w-full">
+            <div class="flex-col text-center mx-auto px-64 py-20">
+                <div class="font-geologica flex items-center text-[5vw] font-bold uppercase mb-4 pl-0 tracking-[1vh]">
+                    Design to 
+                </div>
+                <div id="dev" class="font-geologica flex items-center text-[5vw] font-bold uppercase mb-4 pl-0 tracking-[1vh]">
+                    Development
                 </div>
                 <!--
-                <div id="switch" class="flex justify-center items-center w-full  ">
-                    <span class="text-[3vw] font-1">
-                        JavaScript
-                    </span>
-                    <span class="text-[3vw] hidden font-2">
-                        Python
-                    </span>
-                    <span class="text-[3vw] hidden font-3">
-                        Java
-                    </span>
-                    <span class="text-[3vw] hidden font-4">
-                        C#
-                    </span>
-                    <span class="text-[3vw] hidden font-5">
-                        PHP
-                    </span>
+                <div id="switch" class="flex justify-center items-center w-full">
+                    <span class="text-[3vw] font-1">JavaScript</span>
+                    <span class="text-[3vw] hidden font-2">Python</span>
+                    <span class="text-[3vw] hidden font-3">Java</span>
+                    <span class="text-[3vw] hidden font-4">C#</span>
+                    <span class="text-[3vw] hidden font-5">PHP</span>
                 </div>
                 -->
             </div>   
         </div>
         <div id="features" class="w-full absolute bottom-8 left-0 text-center">
-            <div class="flex justify-evenly uppercase  text-xs tracking-[3px]">
+            <div class="flex justify-evenly uppercase text-xs tracking-[3px]">
                 <span class="mx-2">design</span>
                 <span class="mx-2">&</span>
                 <span class="mx-2">coding</span>
             </div>
         </div>
     </header>
+
+    <!-- JavaScript pour le menu latéral -->
+    <script>
+        const burger = document.getElementById('burger');
+        const sideMenu = document.getElementById('side-menu');
+        const closeBtn = document.getElementById('close-btn');
+        const overlay = document.getElementById('overlay');
+
+        // Fonction pour ouvrir le menu latéral
+        const openMenu = () => {
+            sideMenu.classList.add('open');
+            overlay.classList.add('open');
+            // Désactiver le scroll du corps lorsque le menu est ouvert
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Fonction pour fermer le menu latéral
+        const closeMenu = () => {
+            sideMenu.classList.remove('open');
+            overlay.classList.remove('open');
+            // Réactiver le scroll du corps lorsque le menu est fermé
+            document.body.style.overflow = '';
+        };
+
+        // Ouvrir le menu quand on clique sur le burger
+        burger.addEventListener('click', openMenu);
+
+        // Fermer le menu quand on clique sur le bouton de fermeture
+        closeBtn.addEventListener('click', closeMenu);
+
+        // Fermer le menu quand on clique sur l'overlay
+        overlay.addEventListener('click', closeMenu);
+
+        // Optionnel : Fermer le menu avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
     <main >
         <div class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative">
             <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-16">
               <div class="flex justify-center">
                 <img 
-                  src="img/ivanePhoto.JPG" 
+                  src="img/" 
                   alt="Photo Ivane Bonnet" 
                   class="w-80 h-80 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
                 />
               </div>
           
-              <div class="text-center md:text-left">
+              <div class="text-center md:text-left ">
                 <h1 id="me" class="text-5xl md:text-4xl font-bold uppercase mb-6 tracking-[3px]">
                   Ivane Bonnet
                 </h1>
@@ -229,9 +263,9 @@
                 </h1>
             </div>
             <section id="work1" class="panel h-screen bg-black flex items-center justify-center">
-                <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
+                <div class="grid grid grid-cols-[1fr_2fr_2fr] gap-6 max-w-1xl w-full">
                     <div id="case1" class=" aspect-square flex justify-center">
-                        <h6 class="font-bold">#case_01</h6>
+                        <h6 class="font-bold">#01</h6>
                     </div>
                     
                     <div id="image1" class=" aspect-square flex items-center justify-center">
@@ -240,19 +274,19 @@
                     
                     <div id="title1" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Cosmojet</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] tracking-[1px] uppercase scramble-text mb-16">Cosmojet</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Creation of a front-end website, in a responsive manner, for the creation of a product or service.</p>
+                            <p class=" flex items-center font-geologica  text-xl ">Creation of a front-end website, in a responsive manner, for the creation of a product or service.</p>
                         </div>
                         <div class="">
-                            <a href="cosmojet.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
+                            <a href="cosmojet.html" class="inline-block font-geologica text-xl  font-[400] mt-[1rem] border-b-4">View more</a>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="work2" class="panel h-screen bg-red-100 flex items-center justify-center">
-                <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
+                <div class="grid grid-cols-[1fr_2fr_2fr]  gap-6 max-w-1xl w-full">
                     <div id="case2" class=" aspect-square flex justify-center">
                         <h6 class="font-bold">#case_02</h6>
                     </div>
@@ -263,10 +297,10 @@
                     
                     <div id="title2" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Towa</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] tracking-[1px] uppercase scramble-text mb-16">Towa</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Java project on the development of rules and AI for a board game.</p>
+                            <p class=" flex items-center font-geologica  text-xl">Java project on the development of rules and AI for a board game.</p>
                         </div>
                         <div class="">
                             <a href="towa.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
@@ -275,7 +309,7 @@
                 </div>
             </section>
             <section id="work3" class="panel h-screen bg-red-100 flex items-center justify-center">
-                <div class="grid grid-cols-3 gap-6 max-w-1xl w-full">
+                <div class="grid grid-cols-[1fr_2fr_2fr]  gap-6 max-w-1xl w-full">
                     <div id="case3" class=" aspect-square flex justify-center">
                         <h6 class="font-bold">#case_03</h6>
                     </div>
@@ -286,10 +320,10 @@
                     
                     <div id="title3" class=" flex flex-col justify-center p-4  aspect-square">
                         <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] uppercase scramble-text mb-16">Robot tournament</h1>
+                            <h1 class="font-geologica text-2xl  font-[600] uppercase tracking-[1px] scramble-text mb-16">Robot tournament</h1>
                         </div>
                         <div class="flex">
-                            <p class=" flex items-center font-geologica text-small-size font-[400] scramble-text">Full stack creation of a website which allows you to create and manage a robot tournament organization.</p>
+                            <p class=" tracking-[1px] flex items-center font-geologica  text-xl">Full stack creation of a website which allows you to create and manage a robot tournament organization.</p>
                         </div>
                         <div class="">
                             <a href="robotTournament.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
