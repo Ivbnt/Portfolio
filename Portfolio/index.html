@@ -150,13 +150,16 @@
         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
 
         <div id="box-name" class="w-full">
-            <div class="flex-col text-center mx-auto px-64 py-20">
-                <div class="font-geologica flex items-center text-[5vw] font-bold uppercase mb-4 pl-0 tracking-[1vh]">
+            <div class="flex flex-col text-center lg:mx-auto lg:px-64 lg:py-20 md:px-16 md:py-16 sm:px-8 sm:py-8 px-4 py-4">
+                <div class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase tracking-[1vh]">
                     Design to 
                 </div>
-                <div id="dev" class="font-geologica flex items-center text-[5vw] font-bold uppercase mb-4 pl-0 tracking-[1vh]">
+                <div id="dev" class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase mb-4 tracking-[1vh]">
                     Development
                 </div>
+                <!--<div class="font-geologica flex items-center text-xl font-bold uppercase pt-4">
+                    ivane portfolio site
+                </div>-->
                 <!--
                 <div id="switch" class="flex justify-center items-center w-full">
                     <span class="text-[3vw] font-1">JavaScript</span>
@@ -217,44 +220,47 @@
         });
     </script>
     <main >
-        <div class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative">
-            <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-16">
-              <div class="flex justify-center">
-                <img 
-                  src="img/" 
-                  alt="Photo Ivane Bonnet" 
-                  class="w-80 h-80 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
-                />
-              </div>
-          
-              <div class="text-center md:text-left ">
-                <h1 id="me" class="text-5xl md:text-4xl font-bold uppercase mb-6 tracking-[3px]">
-                  Ivane Bonnet
-                </h1>
-          
-                <h2 class="text-2xl font-bold mb-4">
-                  About
-                </h2>
-                <p class="text-lg leading-relaxed mb-8 font-semibold tracking-wide">
-                  Handling graphic design and coding at a design company, implementing
-                  solutions that balance functionality with visual appeal.
-                </p>
-          
-                <a 
-                  href="about.html" 
-                  class="inline-block px-8 py-4 rounded bg-black text-white font-semibold text-lg hover:bg-gray-700 transition-colors duration-200"
-                >
-                  Learn More
-                </a>
-              </div>
+        <div class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24">
+            <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-8 sm:gap-12 md:gap-16 lg:gap-20">
+                <div class="flex justify-center">
+                    <img 
+                        src="img/" 
+                        alt="Photo Ivane Bonnet" 
+                        class="w-48 h-48 sm:w-60 sm:h-60 md:w-48 md:h-48 lg:w-80 lg:h-80 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
+                    />
+                </div>
+        
+                <div class="text-center md:text-left">
+                    <h1 id="me" class="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 sm:mb-6 tracking-wide">
+                        Ivane Bonnet
+                    </h1>
+        
+                    <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+                        About
+                    </h2>
+                    <p class="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 font-semibold tracking-wide">
+                        Handling graphic design and coding at a design company, implementing
+                        solutions that balance functionality with visual appeal.
+                    </p>
+        
+                    <a 
+                        href="about.html" 
+                        class="inline-block px-6 sm:px-8 py-3 sm:py-4 rounded bg-black text-white font-semibold text-base sm:text-lg hover:bg-gray-700 transition-colors duration-200"
+                    >
+                        Learn More
+                    </a>
+                </div>
             </div>
-          </div>
+        </div>
+        
       
         
         <div class="scroll-container bg-[#1C1C1C] text-white " id="scrollContainer">
-            <div id="Work" class="panel z-5 h-screen m-0 p-0 ">
-                <h3 class="top-0 mx-auto text-center text-[3vw] tracking-[2vw]">SELECTED </h3>
-                <h1 class="sticky top-0 mx-auto text-center text-[10vw] transition-all duration-300 hacker-effect">
+            <div id="Work" class="panel z-5 h-screen m-0 p-0 flex flex-col items-center justify-center md:items-start md:justify-start">
+                <h3 class="top-0 mx-auto text-center text-[3vw] tracking-[2vw] sm:text-[4vw] sm:tracking-[1.5vw] md:text-[3vw] md:tracking-[1vw]">
+                    SELECTED
+                </h3>
+                <h1 class="sticky top-0 mx-auto text-center text-[10vw] transition-all duration-300 hacker-effect sm:text-[8vw]">
                     <span class="letter animated">W</span>
                     <span class="letter animated">O</span>
                     <span class="letter animated">R</span>
@@ -262,6 +268,7 @@
                     <span class="letter hacker-letter">S<span class="random-char"></span></span>
                 </h1>
             </div>
+            
             <section id="work1" class="panel h-screen bg-black flex items-center justify-center">
                 <div class="grid grid grid-cols-[1fr_2fr_2fr] gap-6 max-w-1xl w-full">
                     <div id="case1" class=" aspect-square flex justify-center">
@@ -421,9 +428,10 @@
         // On veut qu'à progress=0 => translateY(100%) (invisible en bas)
         // et à progress=1 => translateY(0%) (complètement visible).
         const translateValue = 100 - (100 * progress);
+        const translateValuework1 = 100 - (100 * progress);
 
         // Appliquer le transform
-        work1.style.transform = `translateY(${translateValue}%)`;
+        work1.style.transform = `translateY(${translateValuework1}%)`;
         work2.style.transform = `translateY(${translateValue}%)`;
         work3.style.transform = `translateY(${translateValue}%)`;
       });
