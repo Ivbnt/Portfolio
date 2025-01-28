@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Details - Ivane</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="menuburger.css">
+  <link rel="stylesheet" href="navbar.css">
   <style>
     body {
       background-color: #FAF3E0; /* Crème Premium */
@@ -22,94 +23,102 @@
 <body class="bg-[#D6D6D6]">
 
   <!-- Navbar -->
-  <div id="navbar" class="absolute w-full top-0 left-0 z-10">
-    <div id="quickbar" class="max-w-7xl mx-auto px-20 py-20 flex justify-between items-center h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-            <a href="index.html" class="tracking-[2px] font-bold uppercase">
-            Ivane
-            </a>
+  <header id="top" class=" relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+    <div id="navbar" class="absolute w-full top-0 left-0 z-10">
+        <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                    Ivane
+                </a>
+            </div>
+            <!-- Icône du burger, visible uniquement sur petits écrans -->
+            <div class="md:hidden">
+                <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Menu principal, caché sur petits écrans -->
+            <div id="menu" class="hidden md:flex">
+                <ul class="flex space-x-6 tracking-[2px] items-center">
+                    <li>
+                        <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                            <span class="hidden">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                            <span class="hidden">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- Menu -->
-        <div id="menu" class="flex">
-            <ul class="flex space-x-6 tracking-[2px] items-center">
+    </div>
+    
+    <!-- Menu latéral -->
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
+        <div class="p-4">
+            <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <ul class="flex flex-col space-y-4">
                 <li>
-                    <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
-                        <span class="original">
-                            <span>H</span>
-                            <span>O</span>
-                            <span>M</span>
-                            <span>E</span>
-                        </span>
-                        <span class="hidden">
-                            <span>H</span>
-                            <span>O</span>
-                            <span>M</span>
-                            <span>E</span>
-                        </span>
-                    </a>
+                    <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
                 </li>
                 <li>
-                    <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
-                        <span class="original">
-                            <span>A</span>
-                            <span>B</span>
-                            <span>O</span>
-                            <span>U</span>
-                            <span>T</span>
-                        </span>
-                        <span class="hidden">
-                            <span>A</span>
-                            <span>B</span>
-                            <span>O</span>
-                            <span>U</span>
-                            <span>T</span>
-                        </span>
-                    </a>
+                    <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
                 </li>
                 <li>
-                    <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
-                        <span class="original">
-                            <span>W</span>
-                            <span>O</span>
-                            <span>R</span>
-                            <span>K</span>
-                        </span>
-                        <span class="hidden">
-                            <span>W</span>
-                            <span>O</span>
-                            <span>R</span>
-                            <span>K</span>
-                        </span>
-                    </a>
+                    <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
                 </li>
                 <li>
-                    <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
-                        <span class="original">
-                            <span>C</span>
-                            <span>O</span>
-                            <span>N</span>
-                            <span>T</span>
-                            <span>A</span>
-                            <span>C</span>
-                            <span>T</span>
-                        </span>
-                        <span class="hidden">
-                            <span>C</span>
-                            <span>O</span>
-                            <span>N</span>
-                            <span>T</span>
-                            <span>A</span>
-                            <span>C</span>
-                            <span>T</span>
-                        </span>
-                    </a>
+                    <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
                 </li>
             </ul>
         </div>
     </div>
-</div>
 
+    <!-- Overlay avec flou -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+    <!-- JavaScript pour le menu latéral -->
+  <script src="menuBurger.js"></script>
+
+</header>
   <!-- Conteneur Principal -->
   <div class="min-h-screen pt-64 px-8 py-20 max-w-7xl mx-auto">
     <!-- Titre du Projet -->
