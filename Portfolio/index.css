@@ -1,33 +1,4 @@
 /* MENU BURGER*/
-/* Styles personnalisés pour le menu latéral et l'overlay */
-        
-        /* Menu latéral caché par défaut */
-        #side-menu {
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-      }
-
-      /* Menu latéral visible */
-      #side-menu.open {
-          transform: translateX(0);
-      }
-
-      /* Overlay caché par défaut */
-      #overlay {
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-      }
-
-      /* Overlay visible avec flou du fond */
-      #overlay.open {
-          opacity: 1;
-          visibility: visible;
-          backdrop-filter: blur(5px);
-          /* Pour les navigateurs ne supportant pas backdrop-filter */
-          background-color: rgba(0, 0, 0, 0.5);
-      }
-
 
 
 /* ANIMATION NAVBAR*/
