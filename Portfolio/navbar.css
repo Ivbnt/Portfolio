@@ -1,63 +1,88 @@
-body {
-  background: #EAEAEA;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-/* ----- Container principal de la Navbar ----- */
-#navbar {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
-  background: transparent;
-  transition: all 0.4s ease;
-  padding: 0.25rem;
-}
 
-/* ----- Conteneur interne: brand + menu ----- */
-#quickbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* brand à gauche, menu/burger à droite */
-  padding: 0.5rem 1rem;
-  background: transparent;
-}
 
-/* ----- "Dynamic Island" : apparence pill + animation ----- */
-#navbar.dynamic-island {
-  width: 50rem; /* ou 300px, ce que tu préfères */
-  top: 1.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 9999px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  animation: fadeSlideDown 0.5s forwards ease;
-}
+/* ==============================
+   DYNAMIC ISLAND UNIQUEMENT 
+   POUR LES ÉCRANS < 768px
+   ============================== */
+   /*
+@media (max-width: 767px) {
 
-@keyframes fadeSlideDown {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -10%);
+  #top {
+    z-index: auto !important; 
   }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0);
+  
+  body {
+    background: #D6D6D6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    background: transparent;
+    transition: all 0.4s ease;
+    padding: 0.25rem;
+  }
+  
+
+  #quickbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+  }
+
+
+  #navbar.dynamic-island {
+    position: fixed !important;
+    width: 90%;
+    max-width: 300px; 
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #D6D6D6;
+    border-radius: 9999px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    animation: fadeSlideDown 0.5s forwards ease;
+    z-index: 9999 !important;
+  }
+
+
+  #navbar.dynamic-island #quickbar {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    transition: all 0.3s ease;
+    z-index: 9999 !important;
+  }
+
+
+  @keyframes fadeSlideDown {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+ 
+  #navbar.dynamic-island a {
+    color: #333 !important;
   }
 }
 
-/* Couleurs de texte sur fond blanc quand on a la class dynamic-island */
-#navbar.dynamic-island a {
-  color: #333 !important;
-}
+*/
 
-
-/* ---- Effet hover sur cartes projet ---- */
-.project:hover {
-  transform: scale(1.06);
-}
 
 
 /* ANIMATION NAVBAR*/

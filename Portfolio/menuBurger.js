@@ -1,14 +1,17 @@
 // Dynamic island //
+/*
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById("navbar");
 
-  // Dynamic Island effect
-  window.addEventListener("scroll", () => {
-    const navbar = document.getElementById("navbar");
-    if (window.scrollY > 50) {
-      navbar.classList.add("dynamic-island");
-    } else {
-      navbar.classList.remove("dynamic-island");
-    }
-  });
+  if (window.scrollY > 50) {
+    navbar.classList.add("dynamic-island");
+  } else {
+
+    navbar.classList.remove("dynamic-island");
+  }
+});
+*/
+  
 
   ///
 

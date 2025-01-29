@@ -15,7 +15,10 @@
     .font-geologica { font-family: sans-serif; }
     .scramble-text  { letter-spacing: 2px; text-transform: uppercase; }
 
-    
+    /* ---- Effet hover sur cartes projet ---- */
+  .project:hover {
+    transform: scale(1.06);
+  }
 
   </style>
 </head>
@@ -119,14 +122,19 @@
 
   <!-- CONTENU PRINCIPAL -->
   <div class="pt-[6rem] px-6 md:px-[5vw] pb-[4rem]">
-    <div class="max-w-[1440px] mx-auto">
+    <div class="max-w-[1440px] mx-auto ">  
       <!-- Titre principal -->
-      <h1 class="font-geologica scramble-text text-3xl md:text-4xl text-center text-black mb-6">
-        Explore My Projects
-      </h1>
-      <p class="text-center text-gray-800 mb-8">
-        Browse my work and filter by technology.
-      </p>
+       <!-- SECTION PRINCIPALE (Titre : 50vh) -->
+      <section class="flex items-center bg-white h-[50vh] px-8">
+        <!-- Gros titre "WORKS" -->
+        <h1 class="text-6xl md:text-8xl font-bold text-gray-800">
+          WORKS
+        </h1>
+        <p class="text-center text-gray-800 mb-8">
+          Browse my work and filter by technology.
+        </p>
+      </section>
+      
 
       <!-- Barre de recherche -->
       <div class="flex justify-center mb-12">
