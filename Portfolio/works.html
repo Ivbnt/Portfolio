@@ -4,140 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Projects - Ivane (Dynamic Island Navbar - Brand & Buttons)</title>
+  <!-- Tailwind (si besoin pour le reste) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Ton fichier navbar.css (optionnel) -->
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="menuburger.css">
+
   <style>
     /* ---- Polices et styles de base ---- */
     .font-geologica { font-family: sans-serif; }
     .scramble-text  { letter-spacing: 2px; text-transform: uppercase; }
 
-    body {
-      background: #EAEAEA;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    .bg-dark-base { background: #222; }
+    
 
-    /* ----- Container principal de la Navbar ----- */
-    #navbar {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      background: transparent;
-      transition: all 0.4s ease;
-      padding: 0.25rem;
-    }
-
-    /* ----- Conteneur interne: brand + menu ----- */
-    #quickbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between; /* brand à gauche, menu/burger à droite */
-      padding: 0.5rem 1rem;
-      background: transparent;
-    }
-
-    /* ----- "Dynamic Island" : apparence pill + animation ----- */
-    #navbar.dynamic-island {
-      top: 1.2rem; 
-      background: #fff;
-      border-radius: 9999px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      animation: fadeSlideDown 0.5s forwards ease;
-    }
-
-    @keyframes fadeSlideDown {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, -10%);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
-    }
-
-    /* Couleurs de texte sur fond blanc */
-    #navbar.dynamic-island a {
-      color: #333 !important;
-    }
-
-    /* ----- Burger (visible sur mobile) ----- */
-    #burger {
-      background: transparent;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      display: none; /* caché en desktop */
-    }
-    /* On cache le menu en mobile, on l'affiche en desktop */
-    #menu {
-      display: none;
-    }
-    @media (min-width: 768px) {
-      #burger {
-        display: none;
-      }
-      #menu {
-        display: flex;
-      }
-    }
-
-    /* Optionnel: menu mobile si besoin. 
-       Ici, on ne gère pas la version mobile du menu, 
-       mais vous pouvez y ajouter .active, etc. */
-
-    /* ---- Effet hover sur cartes projet ---- */
-    .project:hover {
-      transform: scale(1.06);
-    }
   </style>
 </head>
 
 <body>
   <!-- NAVBAR -->
-  <div id="navbar">
-    <div id="quickbar">
-      <!-- BRAND à gauche -->
-      <div id="brand-slot" class="mr-4">
-        <a href="index.html" class="font-bold uppercase tracking-[2px] text-gray-800">
-          Ivane
-        </a>
-      </div>
-      <!-- MENU et BURGER à droite -->
-      <div class="flex items-center gap-4">
-        <!-- Bouton Burger (mobile) -->
-        <button id="burger" aria-label="Ouvrir le menu">
-          <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor"
-               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-
-        <!-- Menu principal (desktop) -->
-        <ul id="menu" class="gap-4 flex">
-          <li>
-            <a href="about.html" class="px-3 py-1 text-sm text-gray-800 leading-none">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="works.html" class="px-3 py-1 text-sm text-gray-800 leading-none">
-              Work
-            </a>
-          </li>
-          <li>
-            <a href="contact.html" class="px-3 py-1 text-sm text-gray-800 leading-none">
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div id="navbar-content">
+    <div id="navbar" class="absolute w-full top-0 left-0 z-10">
+        <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                    Ivane
+                </a>
+            </div>
+            <!-- Icône du burger, visible uniquement sur petits écrans -->
+            <div class="md:hidden">
+                <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Menu principal, caché sur petits écrans -->
+            <div id="menu" class="hidden md:flex">
+                <ul class="flex space-x-6 tracking-[2px] items-center">
+                    <li>
+                        <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                            <span class="hidden">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                            <span class="hidden">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+
+<!-- Menu latéral -->
+<div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
+    <div class="p-4">
+        <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <ul class="flex flex-col space-y-4">
+            <li>
+                <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
+            </li>
+            <li>
+                <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
+            </li>
+            <li>
+                <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
+            </li>
+            <li>
+                <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Overlay avec flou -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
 
   <!-- CONTENU PRINCIPAL -->
   <div class="pt-[6rem] px-6 md:px-[5vw] pb-[4rem]">
@@ -216,64 +194,106 @@
             </div>
           </a>
         </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- (etc. d'autres projets) -->
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer class="bg-dark-base text-white py-8 mt-16 relative">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-[5vw]">
-      <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-6 mb-8">
-        <p class="text-sm">
-          Contact:
-          <a href="mailto:kawaguchi.shin.03@gmail.com" class="underline">
-            email me
-          </a>
-        </p>
-        <a
-          href="https://x.com/kwgsh53"
-          target="_blank"
-          class="underline text-sm"
-        >
-          SNS (X)
-        </a>
-      </div>
-      <h2 class="font-geologica scramble-text text-2xl md:text-4xl tracking-tight">
-        Design to<br class="hidden md:inline" />
-        Development
-      </h2>
-    </div>
   </footer>
 
   <script>
-    // Filtrer les projets
     function filterProjects() {
-      const searchValue = document.getElementById("search").value.toLowerCase();
-      const projects = document.querySelectorAll(".project");
-      projects.forEach(proj => {
-        const tech = proj.getAttribute("data-tech").toLowerCase();
-        proj.style.display = tech.includes(searchValue) ? "block" : "none";
-      });
-    }
-
-    // Menu burger (mobile)
-    const burger = document.getElementById("burger");
-    const menu   = document.getElementById("menu");
-    if(burger && menu) {
-      burger.addEventListener("click", () => {
-        menu.classList.toggle("active");
-      });
-    }
-
-    // Dynamic Island effect
-    window.addEventListener("scroll", () => {
-      const navbar = document.getElementById("navbar");
-      if (window.scrollY > 50) {
-        navbar.classList.add("dynamic-island");
-      } else {
-        navbar.classList.remove("dynamic-island");
-      }
+    const searchValue = document.getElementById("search").value.toLowerCase();
+    const projects = document.querySelectorAll(".project");
+    projects.forEach(proj => {
+      const tech = proj.getAttribute("data-tech").toLowerCase();
+      proj.style.display = tech.includes(searchValue) ? "block" : "none";
     });
+  }
   </script>
+  <script src="menuBurger.js"></script>
 </body>
 </html>

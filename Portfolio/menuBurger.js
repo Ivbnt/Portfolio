@@ -1,3 +1,19 @@
+// Dynamic island //
+
+  // Dynamic Island effect
+  window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("dynamic-island");
+    } else {
+      navbar.classList.remove("dynamic-island");
+    }
+  });
+
+  ///
+
+
+
 const burger = document.getElementById('burger');
         const sideMenu = document.getElementById('side-menu');
         const closeBtn = document.getElementById('close-btn');
