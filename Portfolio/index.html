@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="menuburger.css">
   <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="3Dimg.css">
   <style>
      /* ============================
        WORK1 et WORK2 en "sticky"
@@ -233,71 +234,89 @@
                 </h1>
             </div>
             
-            <section id="work1" class="panel h-screen bg-black flex items-center justify-center">
-                <div class="grid grid grid-cols-[1fr_2fr_2fr] gap-6 max-w-1xl w-full">
-                    <div id="case1" class="  flex justify-center">
-                        <h6 class="font-bold">#01</h6>
+            <section id="work1" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case1" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#01</h6>
                     </div>
                     
-                    <div id="image1" class=" aspect-square flex items-center justify-center">
-                        <img src="img/cosmojet.png" alt="" class="w-full h-full object-cover">
+                    <!-- Colonne 2 : Image -->
+                    <div id="image1" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
                     </div>
                     
-                    <div id="title1" class=" flex flex-col justify-center p-4 aspect-square break-words">
-                        <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] tracking-[1px] uppercase scramble-text mb-16">Cosmojet</h1>
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title1" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Cosmojet</h1>
                         </div>
-                        <div class="flex">
-                            <p class=" flex items-center font-geologica  text-xl ">Creation of a front-end website, in a responsive manner, for the creation of a product or service.</p>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                Création d'un site web front-end, de manière responsive, pour la création d'un produit ou service.
+                            </p>
                         </div>
-                        <div class="">
-                            <a href="cosmojet.html" class="inline-block font-geologica text-xl  font-[400] mt-[1rem] border-b-4">View more</a>
+                        <div>
+                            <a href="cosmojet.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">Voir plus</a>
                         </div>
                     </div>
                 </div>
             </section>
-            <section id="work2" class="panel h-screen bg-red-100 flex items-center justify-center">
-                <div class="grid grid-cols-[1fr_2fr_2fr]  gap-6 max-w-1xl w-full">
-                    <div id="case2" class=" flex justify-center">
-                        <h6 class="font-bold">#case_02</h6>
+            <script src="3Dimg.js"></script>
+            
+            
+            <section id="work2" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case2" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#01</h6>
                     </div>
                     
-                    <div id="image2" class=" aspect-square flex items-center justify-center">
-                        <img src="img/towa.png" alt="" class="w-full h-full object-cover">
+                    <!-- Colonne 2 : Image -->
+                    <div id="image2" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
                     </div>
                     
-                    <div id="title2" class=" flex flex-col justify-center p-4  aspect-square">
-                        <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] tracking-[1px] uppercase scramble-text mb-16">Towa</h1>
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title2" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Cosmojet</h1>
                         </div>
-                        <div class="flex">
-                            <p class=" flex items-center font-geologica  text-xl">Java project on the development of rules and AI for a board game.</p>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                Création d'un site web front-end, de manière responsive, pour la création d'un produit ou service.
+                            </p>
                         </div>
-                        <div class="">
-                            <a href="towa.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
+                        <div>
+                            <a href="cosmojet.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">Voir plus</a>
                         </div>
                     </div>
                 </div>
             </section>
-            <section id="work3" class="panel h-screen bg-red-100 flex items-center justify-center">
-                <div class="grid grid-cols-[1fr_2fr_2fr]  gap-6 max-w-1xl w-full">
-                    <div id="case3" class=" flex justify-center">
-                        <h6 class="font-bold">#case_03</h6>
+            <section id="work3" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case3" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#01</h6>
                     </div>
                     
-                    <div id="image3" class="aspect-square flex items-center justify-center">
-                        <img src="img/Tournoi.png" alt="" class="w-full h-full object-scale-down">
+                    <!-- Colonne 2 : Image -->
+                    <div id="image3" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
                     </div>
                     
-                    <div id="title3" class=" flex flex-col justify-center p-4  aspect-square">
-                        <div class="flex">
-                            <h1 class="font-geologica text-2xl  font-[600] uppercase tracking-[1px] scramble-text mb-16">Robot tournament</h1>
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title3" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Cosmojet</h1>
                         </div>
-                        <div class="flex">
-                            <p class=" tracking-[1px] flex items-center font-geologica  text-xl">Full stack creation of a website which allows you to create and manage a robot tournament organization.</p>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                Création d'un site web front-end, de manière responsive, pour la création d'un produit ou service.
+                            </p>
                         </div>
-                        <div class="">
-                            <a href="robotTournament.html" class="inline-block font-geologica text-base-size  font-[400] mt-[1rem] border-b-4">View more</a>
+                        <div>
+                            <a href="cosmojet.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">Voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -334,8 +353,7 @@
     <footer class="bg-[#D6D6D6] text-center text-sm text-gray-500 py-6 mt-12">
         Design & Development by Ivane Bonnet
     </footer>
-
     <script src="scrollWorks.js"></script>
-  <script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

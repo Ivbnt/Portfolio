@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Effet Tilt</title>
+  <style>
+    /* Conteneur : on applique la perspective */
+    #imageContainer {
+      width: 300px;        /* largeur fixe pour la démo */
+      height: 300px;       /* hauteur fixe pour la démo */
+      margin: 50px auto;   /* centrer la div */
+      perspective: 800px;  /* plus la valeur est petite, plus l'effet est accentué */
+      border: 2px dashed #555; /* juste pour voir les limites */
+    }
+
+    /* L'image subit la transformation 3D */
+    #imageContainer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-style: preserve-3d; 
+      transition: transform 0.2s ease-out; 
+    }
+  </style>
+</head>
+<body style="background: #222; color: #fff;">
+
+  <h1 style="text-align: center;">Démo d'Effet Tilt</h1>
+
+  <div id="imageContainer">
+    <img src="img/cosmojet.png" alt="Cosmojet" />
+  </div>
+
+  <script>
+    // Sélection des éléments
+    const container = document.getElementById("imageContainer");
+    const image = container.querySelector("img");
+
+    // Réglage de l'amplitude de la rotation
+    const maxRotation = 25; // mettez 25 pour un effet plus visible
+
+    // Gestion du mouvement de souris
+    container.addEventListener("mousemove", (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left; 
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calcul de l'inclinaison en pourcentage du maxRotation
+      const rotateX = ((y - centerY) / centerY) * maxRotation; // axe X
+      const rotateY = ((x - centerX) / centerX) * maxRotation; // axe Y
+
+      // Inversion axe X (-rotateX) pour que la rotation soit intuitive 
+      // (pointez le haut => l'image s'incline vers l'arrière)
+      image.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    });
+
+    // Réinitialiser la position quand la souris sort du conteneur
+    container.addEventListener("mouseleave", () => {
+      image.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+    });
+  </script>
+
+</body>
+</html>
