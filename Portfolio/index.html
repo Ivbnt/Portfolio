@@ -21,46 +21,76 @@
     }
 
     #work1 {
-      background: #0A2740; /* bleu foncé */
+
+
       z-index: 10;          /* en dessous */
       transform: translateY(100%);
-
-      
     }
 
+    #work1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/cosmojet.png') center/cover no-repeat;
+        filter: blur(10px);
+        z-index: -1;
+        } 
+
     #work2 {
-      background: #195a26; /* rouge */
       z-index: 20;          /* au-dessus */
       /* Au départ : Work2 est caché en bas => translateY(100%) */
       transform: translateY(100%);
-      /* On veut une transition plus "directe" ? 
-         Ici on n'ajoute PAS de transition, car on veut que 
-         le mouvement soit piloté en temps réel par le scroll.
-         Si vous mettez transition, ça "adoucirait" mais risquerait 
-         de créer un effet de retard. 
-      */
     }
 
+    #work2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/towa.png') center/cover no-repeat;
+        filter: blur(10px);
+        z-index: -1;
+        }
+ 
     #work3 {
       background: #495057; /* rouge */
       z-index: 30;          /* au-dessus */
       /* Au départ : Work2 est caché en bas => translateY(100%) */
       transform: translateY(100%);
-      /* On veut une transition plus "directe" ? 
-         Ici on n'ajoute PAS de transition, car on veut que 
-         le mouvement soit piloté en temps réel par le scroll.
-         Si vous mettez transition, ça "adoucirait" mais risquerait 
-         de créer un effet de retard. 
-      */
+
     }
+
+    #work3::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/Tournoi.png') center/cover no-repeat;
+        filter: blur(10px) ;
+        z-index: -1;
+        
+        }
+
+        #main::before {
+
+        backdrop-filter: blur(10px);
+        
+        }
 
     /* Juste pour avoir un "après" qui continue le scroll */
 
   </style>
   
 </head>
-<body class="bg-[#D6D6D6]">
-    <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+<body class="bg-white-base">
+    <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-white-base fixed z-0">
         <div id="navbar-content">
             <div id="navbar" class=" absolute w-full top-0 left-0 z-10">
                 <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
@@ -192,7 +222,7 @@
     
     <script src="menuBurger.js"></script>
     <main >
-        <div class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24">
+        <div id="main" class="bg-[#1C1C1C] min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24">
             <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                 <div class="flex justify-center">
                     <img 
@@ -281,7 +311,7 @@
                     
                     <!-- Colonne 2 : Image -->
                     <div id="image2" class="flex items-center justify-center lg:w-8/12">
-                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
+                        <img src="img/towa.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
                     </div>
                     
                     <!-- Colonne 3 : Texte -->
@@ -309,7 +339,7 @@
                     
                     <!-- Colonne 2 : Image -->
                     <div id="image3" class="flex items-center justify-center lg:w-8/12">
-                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
+                        <img src="img/Tournoi.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
                     </div>
                     
                     <!-- Colonne 3 : Texte -->

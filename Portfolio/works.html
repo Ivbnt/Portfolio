@@ -3,40 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Projects - Ivane</title>
-  <!-- Tailwind CSS -->
+  <title>My Projects - Ivane (Dynamic Island Navbar - Brand & Buttons)</title>
+  <!-- Tailwind (si besoin pour le reste) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="menuburger.css">
+  <!-- Ton fichier navbar.css (optionnel) -->
   <link rel="stylesheet" href="navbar.css">
-  <script src="menuBurger.js"></script>
+  <link rel="stylesheet" href="menuburger.css">
 
   <style>
-    /* Animation de défilement infini (bande en bas du header) */
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
+    /* ---- Polices et styles de base ---- */
+    .font-geologica { font-family: sans-serif; }
+    .scramble-text  { letter-spacing: 2px; text-transform: uppercase; }
 
-    /* Conteneur pour la bande défilante */
-    .scrolling-container  {
-      display: flex;
-      width: 5%; /* Double la largeur pour dupliquer le contenu */
-      white-space: nowrap; /* Empêche le renvoi à la ligne */
-      width: 200vw;
-      animation: scroll-left 30s linear infinite; /* Ajustez la durée pour la vitesse */
-    }
+    /* ---- Effet hover sur cartes projet ---- */
+  .project:hover {
+    transform: scale(1.06);
+  }
 
-    .scrolling-container a {
-      width: 150vw;
-    }
   </style>
 </head>
-<body class="bg-[#D6D6D6]">
-  <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+
+<body>
+  <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-white-base fixed z-0">
     <div id="navbar-content">
         <div id="navbar" class=" absolute w-full top-0 left-0 z-10">
             <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
@@ -135,7 +123,7 @@
     <div id="box-name" class="w-full">
         <div class="flex flex-col text-center lg:mx-auto lg:px-64 lg:py-20 md:px-16 md:py-16 sm:px-8 sm:py-8 px-4 py-4">
             <div class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase tracking-[1vh]">
-                work & 
+                Works &
             </div>
             <div id="dev" class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase mb-4 tracking-[1vh]">
                 Creation
@@ -154,219 +142,196 @@
             -->
         </div>   
     </div>
-    <!-- Bande défilante en bas du header -->
-    <div class="w-full absolute bottom-8 left-0 overflow-hidden">
-        <div class="scrolling-container flex items-center px-4">
-            <a href="#" class="mr-6 hover:text-blue-500">Project Alpha</a>
-            <a href="#" class="mr-6 hover:text-blue-500">Project Beta</a>
-            <a href="#" class="mr-6 hover:text-blue-500">Project Gamma</a>
-            <a href="#" class="mr-6 hover:text-blue-500">Project Delta</a>
-            <a href="#" class="mr-6 hover:text-blue-500">Project Epsilon</a>
+    <div id="features" class="w-full absolute bottom-8 left-0 text-center">
+        <div class="flex justify-evenly uppercase text-xs tracking-[3px]">
+            <span class="mx-2">design</span>
+            <span class="mx-2">&</span>
+            <span class="mx-2">coding</span>
         </div>
     </div>
 </header>
-
-  <!-- duplication du scroller -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Dupliquer le contenu du scroller pour un défilement infini
-      const scroller = document.querySelector('.scrolling-container');
-      if (scroller) {
-        scroller.innerHTML += scroller.innerHTML + scroller.innerHTML + scroller.innerHTML + scroller.innerHTML +scroller.innerHTML; 
-      }
-    });
-  </script>
-
-  <!-- ESPACE APRES LE HEADER POUR LES SECTIONS PROJETS -->
-  <main class=" bg-[#D6D6D6] ">
-    <section class="h-[30vh]">
-    </section>
-    
-    <!-- SECTION PROJET 1 (ex. Cosmojet) -->
-    <section class="hover relative group py-16 bg-[#D6D6D6]  overflow-hidden">
-      <!-- Arrière-plan défilant, visible au hover -->
-      <div
-        class="
-          absolute inset-0 flex items-center justify-center pointer-events-none 
-          opacity-0 group-hover:opacity-50 
-          transition-opacity duration-700 
-          z-0
-        "
-      >
-        <div class="scrolling-container text-6xl text-gray-400 whitespace-nowrap">
-          <span class="mx-8">COSMOJET COSMOJET COSMOJET</span>
-          <span class="mx-8">COSMOJET COSMOJET COSMOJET</span>
-        </div>
-      </div>
-
-      <!-- Contenu premier plan -->
-      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:space-x-8 relative z-10">
-        <!-- Image principale -->
-        <div class="md:w-2/3 w-full">
-          <img
-            src="img/cosmojet.png"
-            alt="Cosmojet principal"
-            class="w-full h-auto object-cover"
-          />
-        </div>
-        <!-- Mockups -->
-        <div class="md:w-1/3 w-full mt-4 md:mt-0">
-          <img
-            src="img/cosmojetMockups.png"
-            alt="Cosmojet mockups"
-            class="w-full h-auto object-cover"
-          />
-        </div>
-      </div>
-      <!-- View detail + client info -->
-      <div class="max-w-7xl mx-auto px-4 mt-4 flex justify-between items-center relative z-10">
-        <a href="cosmojet.html" class="underline text-base text-blue-600 hover:text-blue-800">
-          view detail
-        </a>
-        <p class="text-gray-600 text-sm text-right">
-          client work
-          <br />
-          (01 Cosmojet Brand Site)
+  <!-- CONTENU PRINCIPAL -->
+  <div class="pt-[6rem] px-6 md:px-[5vw] pb-[4rem]">
+    <div class="max-w-[1440px] mx-auto ">  
+      <!-- Titre principal -->
+       <!-- SECTION PRINCIPALE (Titre : 50vh) -->
+      <section class="flex items-center bg-white h-[50vh] px-8">
+        <!-- Gros titre "WORKS" -->
+        <h1 class="text-6xl md:text-8xl font-bold text-gray-800">
+          WORKS
+        </h1>
+        <p class="text-center text-gray-800 mb-8">
+          Browse my work and filter by technology.
         </p>
-      </div>
-    </section>
+      </section>
+      
 
-    <!-- SECTION PROJET 2 (Towa) -->
-    <section class="relative group py-16 bg-[#D6D6D6] overflow-hidden">
-      <div
-        class="
-          absolute inset-0 flex items-center justify-center pointer-events-none 
-          opacity-0 group-hover:opacity-50 
-          transition-opacity duration-700
-          z-0
-        "
-      >
-        <div class="scrolling-container text-6xl text-gray-400 whitespace-nowrap">
-          <span class="mx-8">TOWA TOWA TOWA</span>
-          <span class="mx-8">TOWA TOWA TOWA</span>
-        </div>
+      <!-- Barre de recherche -->
+      <div class="flex justify-center mb-12">
+        <input
+          id="search"
+          type="text"
+          placeholder="e.g. HTML, Java, Symfony..."
+          class="border-2 border-dashed border-gray-400 w-full max-w-md px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+          oninput="filterProjects()"
+        />
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:space-x-8 relative z-10">
-        <div class="md:w-2/3 w-full">
-          <img
-            src="img/towa.png"
-            alt="Towa principal"
-            class="w-full h-auto object-cover"
-          />
+      <!-- LISTE DE PROJETS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects">
+        <!-- Projet 1 -->
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="html css"
+        >
+          <a href="cosmojet.html">
+            <img
+              src="img/cosmojet.png"
+              alt="Cosmojet"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Cosmojet</h3>
+              <p class="text-sm text-gray-600">HTML / CSS</p>
+            </div>
+          </a>
         </div>
-        <div class="md:w-1/3 w-full mt-4 md:mt-0">
-          <img
-            src="img/towaMockups.png"
-            alt="Towa mockups"
-            class="w-full h-auto object-cover"
-          />
-        </div>
-      </div>
-      <div class="max-w-7xl mx-auto px-4 mt-4 flex justify-between items-center relative z-10">
-        <a href="towa.html" class="underline text-base text-blue-600 hover:text-blue-800">
-          view detail
-        </a>
-        <p class="text-gray-600 text-sm text-right">
-          client work
-          <br />
-          (02 Towa Java Boardgame)
-        </p>
-      </div>
-    </section>
 
-    <!-- SECTION PROJET 3 (Robot Tournament) -->
-    <section class="relative group py-16 bg-white overflow-hidden">
-      <div
-        class="
-          absolute inset-0 flex items-center justify-center pointer-events-none 
-          opacity-0 group-hover:opacity-50 
-          transition-opacity duration-700
-          z-0
-        "
-      >
-        <div class="scrolling-container text-6xl text-gray-400 whitespace-nowrap">
-          <span class="mx-8">ROBOT TOURNAMENT ROBOT TOURNAMENT</span>
-          <span class="mx-8">ROBOT TOURNAMENT ROBOT TOURNAMENT</span>
+        <!-- Projet 2 -->
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="java"
+        >
+          <a href="towa.html">
+            <img
+              src="img/towa.png"
+              alt="Towa"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Towa</h3>
+              <p class="text-sm text-gray-600">Board game in Java</p>
+            </div>
+          </a>
         </div>
-      </div>
 
-      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:space-x-8 relative z-10">
-        <div class="md:w-2/3 w-full">
-          <img
-            src="img/Tournoi.png"
-            alt="Robot Tournament principal"
-            class="w-full h-auto object-cover"
-          />
+        <!-- Projet 3 -->
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
         </div>
-        <div class="md:w-1/3 w-full mt-4 md:mt-0">
-          <img
-            src="img/robotTournamentMockups.png"
-            alt="Robot Tournament mockups"
-            class="w-full h-auto object-cover"
-          />
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="max-w-7xl mx-auto px-4 mt-4 flex justify-between items-center relative z-10">
-        <a href="robotTournament.html" class="underline text-base text-blue-600 hover:text-blue-800">
-          view detail
-        </a>
-        <p class="text-gray-600 text-sm text-right">
-          client work
-          <br />
-          (03 Robot Tournament)
-        </p>
-      </div>
-    </section>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 cursor-pointer"
+          data-tech="php symfony"
+        >
+          <a href="robotTournament.html">
+            <img
+              src="img/Tournoi.png"
+              alt="Robot Tournament"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+              <p class="text-sm text-gray-600">PHP / Symfony</p>
+            </div>
+          </a>
+        </div>
 
-    <!-- SECTION PROJET 4 (Epsilon) -->
-    <section class="relative group py-16 bg-white overflow-hidden">
-      <div
-        class="
-          absolute inset-0 flex items-center justify-center pointer-events-none 
-          opacity-0 group-hover:opacity-50 
-          transition-opacity duration-700
-          z-0
-        "
-      >
-        <div class="scrolling-container text-6xl text-gray-400 whitespace-nowrap">
-          <span class="mx-8">EPSILON EPSILON EPSILON</span>
-          <span class="mx-8">EPSILON EPSILON EPSILON</span>
-        </div>
+        <!-- (etc. d'autres projets) -->
       </div>
-
-      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:space-x-8 relative z-10">
-        <div class="md:w-2/3 w-full">
-          <img
-            src="img/epsilon.png"
-            alt="Epsilon principal"
-            class="w-full h-auto object-cover"
-          />
-        </div>
-        <div class="md:w-1/3 w-full mt-4 md:mt-0">
-          <img
-            src="img/epsilonMockups.png"
-            alt="Epsilon mockups"
-            class="w-full h-auto object-cover"
-          />
-        </div>
-      </div>
-      <div class="max-w-7xl mx-auto px-4 mt-4 flex justify-between items-center relative z-10">
-        <a href="#" class="underline text-base text-blue-600 hover:text-blue-800">
-          view detail
-        </a>
-        <p class="text-gray-600 text-sm text-right">
-          client work
-          <br />
-          (04 Epsilon Brand Site)
-        </p>
-      </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-800 text-white py-8 mt-16 text-center">
-    <p class="text-sm">&copy; 2023 Ivane Portfolio. All rights reserved.</p>
+  <footer class="bg-dark-base text-white py-8 mt-16 relative">
   </footer>
+
+  <script>
+    function filterProjects() {
+    const searchValue = document.getElementById("search").value.toLowerCase();
+    const projects = document.querySelectorAll(".project");
+    projects.forEach(proj => {
+      const tech = proj.getAttribute("data-tech").toLowerCase();
+      proj.style.display = tech.includes(searchValue) ? "block" : "none";
+    });
+  }
+  </script>
+  <script src="menuBurger.js"></script>
 </body>
 </html>
