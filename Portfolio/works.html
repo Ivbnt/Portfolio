@@ -11,130 +11,202 @@
   <link rel="stylesheet" href="menuburger.css">
 
   <style>
-    /* ---- Polices et styles de base ---- */
-    .font-geologica { font-family: sans-serif; }
-    .scramble-text  { letter-spacing: 2px; text-transform: uppercase; }
-
     /* ---- Effet hover sur cartes projet ---- */
   .project:hover {
     transform: scale(1.06);
   }
 
-  </style>
-</head>
+    /* Styles pour le défilement infini des projets */
+    @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
 
+        .scrolling-container {
+            display: flex;
+            width: 200%; /* Double la largeur pour contenir les deux copies */
+            animation: scroll-left 40s linear infinite;
+            white-space: nowrap; /* Empêche les éléments de se renvoyer à la ligne */
+        }
+
+        .project-item {
+            flex: 0 0 auto;
+            padding: 0 3vw; /* Espacement horizontal entre les projets */
+            text-decoration: none; /* Supprime la sous-ligne des liens */
+            color: #000; /* Couleur du texte */
+            transition: color 0.3s, text-decoration 0.3s; /* Transition fluide pour les effets */
+        }
+
+        .project-item:hover {
+            color: #1D4ED8; /* Change la couleur au survol */
+        }
+
+        .separator {
+            flex: 0 0 auto;
+            padding: 0 0.5rem;
+            color: #555; /* Couleur des séparateurs */
+            user-select: none; /* Empêche la sélection du séparateur */
+        }
+
+        /* Assurer que le conteneur des projets est bien aligné verticalement */
+        #projectsScroll {
+            display: flex;
+            align-items: center;
+            height: 2rem; /* Ajustez selon vos besoins */
+        }
+  </style>
 <body>
-  <!-- NAVBAR -->
-  <div id="navbar-content">
-    <div id="navbar" class="absolute w-full top-0 left-0 z-10">
-        <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
-            <!-- Logo -->
-            <div class="flex-shrink-0">
-                <a href="index.html" class="tracking-[2px] font-bold uppercase">
-                    Ivane
-                </a>
+    <header id="top" class="h-screen relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+        <div id="navbar-content">
+            <div id="navbar" class="absolute w-full top-0 left-0 z-10">
+                <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                            Ivane
+                        </a>
+                    </div>
+                    <!-- Icône du burger, visible uniquement sur petits écrans -->
+                    <div class="md:hidden">
+                        <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Menu principal, caché sur petits écrans -->
+                    <div id="menu" class="hidden md:flex">
+                        <ul class="flex space-x-6 tracking-[2px] items-center">
+                            <li>
+                                <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>H</span><span>O</span><span>M</span><span>E</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>H</span><span>O</span><span>M</span><span>E</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>W</span><span>O</span><span>R</span><span>K</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>W</span><span>O</span><span>R</span><span>K</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <!-- Icône du burger, visible uniquement sur petits écrans -->
-            <div class="md:hidden">
-                <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+        </div>
+        
+        
+        <!-- Menu latéral -->
+        <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
+            <div class="p-4">
+                <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-            </div>
-            <!-- Menu principal, caché sur petits écrans -->
-            <div id="menu" class="hidden md:flex">
-                <ul class="flex space-x-6 tracking-[2px] items-center">
+                <ul class="flex flex-col space-y-4">
                     <li>
-                        <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
-                            <span class="original">
-                                <span>H</span><span>O</span><span>M</span><span>E</span>
-                            </span>
-                            <span class="hidden">
-                                <span>H</span><span>O</span><span>M</span><span>E</span>
-                            </span>
-                        </a>
+                        <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
                     </li>
                     <li>
-                        <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
-                            <span class="original">
-                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
-                            </span>
-                            <span class="hidden">
-                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
-                            </span>
-                        </a>
+                        <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
                     </li>
                     <li>
-                        <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
-                            <span class="original">
-                                <span>W</span><span>O</span><span>R</span><span>K</span>
-                            </span>
-                            <span class="hidden">
-                                <span>W</span><span>O</span><span>R</span><span>K</span>
-                            </span>
-                        </a>
+                        <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
                     </li>
                     <li>
-                        <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
-                            <span class="original">
-                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
-                            </span>
-                            <span class="hidden">
-                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
-                            </span>
-                        </a>
+                        <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-</div>
+    
+        <!-- Overlay avec flou -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+    
+        <div id="box-name" class="w-full">
+            <div class="flex flex-col text-center lg:mx-auto lg:px-64 lg:py-20 md:px-16 md:py-16 sm:px-8 sm:py-8 px-4 py-4">
+                <div class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase tracking-[1vh]">
+                    Works & 
+                </div>
+                <div id="dev" class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase mb-4 tracking-[1vh]">
+                  Creations 
+                </div>
+                <!--<div class="font-geologica flex items-center text-xl font-bold uppercase pt-4">
+                    ivane portfolio site
+                </div>-->
+                <!--
+                <div id="switch" class="flex justify-center items-center w-full">
+                    <span class="text-[3vw] font-1">JavaScript</span>
+                    <span class="text-[3vw] hidden font-2">Python</span>
+                    <span class="text-[3vw] hidden font-3">Java</span>
+                    <span class="text-[3vw] hidden font-4">C#</span>
+                    <span class="text-[3vw] hidden font-5">PHP</span>
+                </div>
+                -->
+            </div>   
+        </div>
 
+        <!-- Nouvelle section des projets défilants -->
+        <div id="projectsScroll" class="w-full absolute bottom-8 left-0 overflow-hidden">
+          <div class="scrolling-container flex items-center">
+            <a href="#" class="project-item">Project Alpha</a>
+            <span class="separator mx-2 text-gray-500">•</span>
+            <a href="#" class="project-item">Project Beta</a>
+            <span class="separator mx-2 text-gray-500">•</span>
+            <a href="#" class="project-item">Project Gamma</a>
+            <span class="separator mx-2 text-gray-500">•</span>
+            <a href="#" class="project-item">Project Delta</a>
+            <span class="separator mx-2 text-gray-500">•</span>
+            <a href="#" class="project-item">Project Epsilon</a>
+        </div>
+        
+      </div>
 
-<!-- Menu latéral -->
-<div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
-    <div class="p-4">
-        <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-        <ul class="flex flex-col space-y-4">
-            <li>
-                <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
-            </li>
-            <li>
-                <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
-            </li>
-            <li>
-                <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
-            </li>
-            <li>
-                <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- Overlay avec flou -->
-<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+      <script>
+          document.addEventListener('DOMContentLoaded', () => {
+              const scrollingContainer = document.querySelector('.scrolling-container');
+              const projects = scrollingContainer.innerHTML;
+              scrollingContainer.innerHTML += projects + projects + projects + projects; 
+          });
+      </script>
+</header>
 
   <!-- CONTENU PRINCIPAL -->
-  <div class="pt-[6rem] px-6 md:px-[5vw] pb-[4rem]">
+  <div class="pt-[6rem] px-6 md:px-[5vw] pb-[4rem] bg-[#D6D6D6]">
     <div class="max-w-[1440px] mx-auto ">  
-      <!-- Titre principal -->
-       <!-- SECTION PRINCIPALE (Titre : 50vh) -->
-      <section class="flex items-center bg-white h-[50vh] px-8">
-        <!-- Gros titre "WORKS" -->
-        <h1 class="text-6xl md:text-8xl font-bold text-gray-800">
-          WORKS
-        </h1>
-        <p class="text-center text-gray-800 mb-8">
-          Browse my work and filter by technology.
-        </p>
-      </section>
-      
 
       <!-- Barre de recherche -->
       <div class="flex justify-center mb-12">
