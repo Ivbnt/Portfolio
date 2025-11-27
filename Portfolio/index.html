@@ -86,10 +86,7 @@
 
     /* Background image pour le header */
     #top {
-        background-image: url('img/bakcground.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: transparent;
     }
 
     /* Texte blanc pour tout le header */
@@ -99,12 +96,12 @@
 
     /* Spécifiquement pour le logo et les liens de navigation */
     #top a, #top span, #top div {
-        color: white !important;
+        color: black !important;
     }
 
     /* Pour les boutons burger */
     #top svg {
-        stroke: white !important;
+        stroke: black !important;
     }
 
     /* Juste pour avoir un "après" qui continue le scroll */
@@ -112,8 +109,11 @@
   </style>
   
 </head>
-<body class="bg-white-base">
-    <header id="top" class="h-screen relative flex items-center flex-col justify-center fixed z-0">
+<body class="bg-transparent">
+    <!-- Conteneur 3D background -->
+    <div id="bg3d" style="position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;"></div>
+    
+    <header id="top" class="h-screen relative flex items-center flex-col justify-center fixed z-0 bg-transparent">
         <div id="navbar-content">
             <div id="navbar" class=" absolute w-full top-0 left-0 z-10">
                 <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
@@ -245,7 +245,7 @@
     
     <script src="menuBurger.js"></script>
     <main >
-        <div id="main" class="bg-[#100f10] min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24">
+        <div id="main" class="bg-transparent min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24">
             <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                 <div class="flex justify-center">
                     <img 
@@ -255,15 +255,15 @@
                     />
                 </div>
         
-                <div class="text-center md:text-left">
-                    <h1 id="me" class="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 sm:mb-6 tracking-wide">
+                <div class="text-center md:text-left text-black">
+                    <h1 id="me" class="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 sm:mb-6 tracking-wide text-black">
                         Ivane Bonnet
                     </h1>
         
-                    <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-black">
                         About
                     </h2>
-                    <p class="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 font-semibold tracking-wide">
+                    <p class="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 font-semibold tracking-wide text-black">
                         Handling graphic design and coding at a design company, implementing
                         solutions that balance functionality with visual appeal.
                     </p>
@@ -281,12 +281,12 @@
         
       
         
-        <div class="scroll-container bg-[#100f10] text-white " id="scrollContainer">
+        <div class="scroll-container bg-transparent text-black " id="scrollContainer">
             <div id="Work" class="panel z-5 h-screen m-0 p-0 flex flex-col items-center justify-center md:items-start md:justify-start">
-                <h3 class="top-0 mx-auto text-center text-[3vw] tracking-[2vw] sm:text-[4vw] sm:tracking-[1.5vw] md:text-[3vw] md:tracking-[1vw]">
+                <h3 class="top-0 mx-auto text-center text-[3vw] tracking-[2vw] sm:text-[4vw] sm:tracking-[1.5vw] md:text-[3vw] md:tracking-[1vw] text-black">
                     SELECTED
                 </h3>
-                <h1 class="sticky top-0 mx-auto text-center text-[10vw] transition-all duration-300 hacker-effect sm:text-[8vw]">
+                <h1 class="sticky top-0 mx-auto text-center text-[10vw] transition-all duration-300 hacker-effect sm:text-[8vw] text-black">
                     <span class="letter animated">W</span>
                     <span class="letter animated">O</span>
                     <span class="letter animated">R</span>
@@ -415,5 +415,6 @@
     </footer>
     <script src="scrollWorks.js"></script>
     <script src="index.js"></script>
+    <script type="module" src="bg3d.js"></script>
 </body>
 </html>
