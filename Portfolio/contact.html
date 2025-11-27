@@ -7,24 +7,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="menuburger.css">
   <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
   <style>
-    body {
-      background-color: #FAF3E0; /* Crème Premium */
+    /* ---- Effet ombre et animation pour le titre ---- */
+    .page-title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      opacity: 0;
+      animation: titleSlideIn 0.8s ease-out forwards;
     }
-    .contact-logo {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    @keyframes titleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .contact-logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+
+    .contact-item {
+      transition: all 0.3s ease;
+      pointer-events: auto;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .contact-item:hover i {
+      transform: scale(1.15);
+    }
+
+    .contact-item i {
+      transition: transform 0.3s ease;
     }
   </style>
 </head>
-<body class="bg-[#D6D6D6]">
+<body class="bg-white-base">
 
   <!-- Navbar -->
-  <header id="top" class=" relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+  <header id="top" class="relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
     <div id="navbar" class="absolute w-full top-0 left-0 z-10">
         <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
             <!-- Logo -->
@@ -122,43 +148,56 @@
 </header>
 
   <!-- Conteneur Principal -->
-  <div class="min-h-screen pt-64 px-8 py-20 max-w-7xl mx-auto text-center">
+  <div class="pt-40 md:pt-56 px-6 md:px-[5vw] pb-20">
     <!-- Titre de la page -->
-    <div class="mb-12">
-      <h1 class="text-6xl font-extrabold uppercase tracking-wide">
+    <div class="text-center mb-16">
+      <h1 class="page-title text-4xl md:text-5xl font-bold uppercase tracking-[1vh] mb-4">
         Contact Me
       </h1>
-      <p class="text-lg text-gray-700 mt-4">
-        Feel free to reach out via email, LinkedIn, or GitHub.
+      <p class="text-base md:text-lg text-gray-700">
+        Get in touch via email, LinkedIn, or GitHub
       </p>
     </div>
 
-    <!-- Logos de Contact -->
-    <div class="flex flex-wrap justify-center items-center gap-12 mt-12">
-      <!-- Logo Gmail -->
-      <a href="mailto:ivane74.bonnet@gmail.com" target="_blank" class="contact-logo">
-        <img 
-    src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" 
-    alt="Gmail" 
-    class="w-24 h-24 md:w-32 md:h-32"
-  />
-      </a>
-      <!-- Logo LinkedIn -->
-      <a href="https://linkedin.com/in/yourlinkedin" target="_blank" class="contact-logo">
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
-          alt="LinkedIn" 
-          class="w-24 h-24 md:w-32 md:h-32"
-        />
-      </a>
-      <!-- Logo GitHub -->
-      <a href="https://github.com/ivbnt" target="_blank" class="contact-logo">
-        <img 
-          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
-          alt="GitHub" 
-          class="w-24 h-24 md:w-32 md:h-32"
-        />
-      </a>
+    <!-- Section Contact -->
+    <div class="max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Email -->
+        <div class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center cursor-pointer" onclick="window.location.href='mailto:ivanebonnet@orange.fr'">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-google-plain colored text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">Email</h3>
+          <p class="text-sm text-gray-600"></p>
+        </div>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/yourlinkedin" target="_blank" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-linkedin-plain colored text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">LinkedIn</h3>
+          <p class="text-sm text-gray-600"></p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/ivbnt" target="_blank" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-github-original text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">GitHub</h3>
+          <p class="text-sm text-gray-600"></p>
+        </a>
+
+      </div>
+
+      <!-- Message additionnel -->
+      <div class="text-center mt-16">
+        <p class="text-gray-700 mb-6">
+          I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
+        </p>
+      </div>
     </div>
   </div>
 
@@ -167,5 +206,6 @@
     Design & Development by Ivane Bonnet
   </footer>
 
+  <script src="menuBurger.js"></script>
 </body>
 </html>

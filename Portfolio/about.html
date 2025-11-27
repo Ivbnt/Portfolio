@@ -8,8 +8,29 @@
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="menuburger.css">
   <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <style>
+    /* ---- Effet ombre et animation pour le titre ---- */
+    .page-title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      opacity: 0;
+      animation: titleSlideIn 0.8s ease-out forwards;
+    }
+
+    @keyframes titleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-<body class="bg-[#D6D6D6]">
+<body class="bg-white-base">
 
   <!-- Navbar -->
   <header id="top" class=" relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
@@ -113,60 +134,173 @@
 
 
   <!-- Conteneur Principal -->
-  <div class="min-h-screen pt-64 px-8 py-20 max-w-7xl mx-auto">
+  <div class="pt-40 md:pt-56 px-6 md:px-[5vw]">
+    
     <!-- Titre de la page -->
-    <div class="text-center mb-12">
-      <h1 class="font-geologica flex items-center justify-center text-[3vw] font-bold uppercase  mb-4 ml-5 ml-0 pl-0  tracking-[1vh]">
+    <div class="text-center mb-20">
+      <h1 class="page-title text-4xl md:text-5xl font-bold uppercase tracking-[1vh]">
         Ivane Bonnet
       </h1>
     </div>
 
-    <!-- Section principale -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <!-- Image ou photo -->
-      <div class="flex justify-center">
-        <img 
-          src="img/" 
-          alt="Profile Picture" 
-          class="profile-pic rounded-full w-64 h-64 object-cover shadow-lg"
-        />
-      </div>
+    <!-- Section Bio avec Image et Texte -->
+    <div class="max-w-6xl mx-auto mb-32">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-items-center">
+        <!-- Image -->
+        <div class="flex justify-center">
+          <img 
+            src="img/ivanePhoto.JPG" 
+            alt="Profile Picture" 
+            class="rounded-full w-64 h-64 object-cover shadow-lg border-4 border-gray-200 hover:shadow-2xl transition-shadow duration-300"
+          />
+        </div>
 
-      <!-- Présentation personnelle -->
-      <div>
-        <h2 class="text-2xl font-bold uppercase mb-4">Who I Am</h2>
-        <p class="text-gray-700 leading-relaxed mb-6">
-          Hello ! My name is Ivane Bonnet, a computer science student passionate about web development and design. I specialize in crafting beautiful and functional websites that merge creativity with functionality. With experience in both graphic design and coding, I thrive at the intersection of aesthetics and technology.
-        </p>
-        <p class="text-gray-700 leading-relaxed mb-6">
-          My journey started with a deep interest in solving problems and creating visually appealing designs. Today, I work on projects that combine innovative technologies with seamless user experiences.
-        </p>
-        <a 
-          href="img/CV_Ivane_Bonnet.pdf" 
-          class="inline-block px-6 py-3 rounded-md bg-gray-800 text-white font-semibold hover:bg-gray-700 transition-all duration-300"
-          download>
-          Download CV
-        </a>
+        <!-- Texte Bio -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold uppercase mb-6 tracking-[0.5vh]">Who I Am</h2>
+          <p class="text-base md:text-lg leading-relaxed mb-6 text-gray-800">
+            Hello! I'm Ivane Bonnet, a computer science student passionate about web development and design. I specialize in crafting beautiful and functional websites that merge creativity with functionality.
+          </p>
+          <p class="text-base md:text-lg leading-relaxed mb-8 text-gray-800">
+            With experience in both graphic design and coding, I thrive at the intersection of aesthetics and technology. My journey started with a deep interest in solving problems and creating visually appealing designs.
+          </p>
+          <a 
+            href="img/CV_Ivane_Bonnet.pdf" 
+            class="inline-block px-8 py-4 bg-black text-white font-semibold uppercase tracking-[1px] hover:bg-gray-800 transition-all duration-300 border-2 border-black hover:border-gray-800"
+            download>
+            Download CV
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Compétences -->
-    <div class="mt-16">
-      <h2 class="text-2xl font-bold uppercase mb-8 text-center">Skills & Technologies</h2>
-      <div class="flex flex-wrap justify-center gap-6">
-        <!-- Exemple de compétences -->
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">HTML</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">CSS</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">Java</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">JavaScript</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">C#</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">Python</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">PHP</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">SQL</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">Adobe Photoshop</span>
-        <span class="bg-gray-200 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold">C4D</span>
+
+
+    <!-- Section Compétences par Catégorie -->
+    <div class="max-w-6xl mx-auto mb-20">
+      <h2 class="text-xl md:text-2xl font-bold uppercase mb-10 tracking-[0.5vh] text-center">Technical Stack</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Application & Programming Languages -->
+        <div class="group bg-white border border-gray-300 rounded-lg p-6 hover:border-black hover:shadow-xl transition-all duration-300">
+          <div class="mb-5">
+            <h3 class="text-sm font-bold uppercase mb-2 tracking-[1px]">Programming</h3>
+            <div class="h-0.5 w-8 bg-black"></div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                Java
+              </span>
+              <i class="devicon-java-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                C#
+              </span>
+              <i class="devicon-csharp-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                Python
+              </span>
+              <i class="devicon-python-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                C
+              </span>
+              <i class="devicon-c-plain colored text-lg"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="group bg-white border border-gray-300 rounded-lg p-6 hover:border-black hover:shadow-xl transition-all duration-300">
+          <div class="mb-5">
+            <h3 class="text-sm font-bold uppercase mb-2 tracking-[1px]">Web Tech</h3>
+            <div class="h-0.5 w-8 bg-black"></div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                HTML / CSS
+              </span>
+              <div class="flex gap-1">
+                <i class="devicon-html5-plain colored text-lg"></i>
+                <i class="devicon-css3-plain colored text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                JavaScript
+              </span>
+              <i class="devicon-javascript-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                React / Vue.js
+              </span>
+              <div class="flex gap-1">
+                <i class="devicon-react-plain colored text-lg"></i>
+                <i class="devicon-vuejs-plain colored text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                PHP / Symfony
+              </span>
+              <div class="flex gap-1">
+                <i class="devicon-php-plain colored text-lg"></i>
+                <i class="devicon-symfony-original colored text-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Databases & Data Management -->
+        <div class="group bg-white border border-gray-300 rounded-lg p-6 hover:border-black hover:shadow-xl transition-all duration-300">
+          <div class="mb-5">
+            <h3 class="text-sm font-bold uppercase mb-2 tracking-[1px]">Databases</h3>
+            <div class="h-0.5 w-8 bg-black"></div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                MySQL / MongoDB
+              </span>
+              <div class="flex gap-1">
+                <i class="devicon-mysql-plain colored text-lg"></i>
+                <i class="devicon-mongodb-plain colored text-lg"></i>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                Oracle
+              </span>
+              <i class="devicon-oracle-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                Neo4j
+              </span>
+              <i class="devicon-neo4j-plain colored text-lg"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-gray-800 py-2 px-3 bg-gray-50 rounded border-l-3 border-black">
+                SQL Server
+              </span>
+              <i class="devicon-microsoftsqlserver-plain colored text-lg"></i>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
+
+
   </div>
 
   <!-- Footer -->
