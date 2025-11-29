@@ -104,7 +104,67 @@
         stroke: black !important;
     }
 
-    /* Juste pour avoir un "après" qui continue le scroll */
+    /* Contour blanc pour les lettres noires (logo, menu, titre, footer) */
+    #top a,
+    .menu-link,
+    #box-name > div > div,
+    #features > div > span,
+    #main .text-black:not(a),
+    #me,
+    #main h2.text-black,
+    #main p.text-black {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Pas de contour sur le bouton Learn More */
+    .inline-block.px-6 {
+        text-shadow: none !important;
+    }
+
+    /* Contour blanc pour SELECTED et WORKS */
+    .scroll-container h3.text-black,
+    .scroll-container h1.text-black {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Contour blanc pour la section finale (LET'S START, SOMETHING GREAT, TOGETHER) */
+    .after h1,
+    .after h2 {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Contour blanc pour CONTACT NOW */
+    .btn-circle span {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Animation d'apparition pour DESIGN TO DEVELOPMENT */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #box-name > div > div:nth-child(1) {
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    #box-name > div > div:nth-child(2) {
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
 
   </style>
   
@@ -249,7 +309,7 @@
             <div class="flex flex-col md:flex-row items-center text-white max-w-6xl mx-auto gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                 <div class="flex justify-center">
                     <img 
-                        src="img/" 
+                        src="img/ivane.jpg  " 
                         alt="Photo Ivane Bonnet" 
                         class="w-48 h-48 sm:w-60 sm:h-60 md:w-48 md:h-48 lg:w-80 lg:h-80 rounded-full border-4 border-[#2C3E50] object-cover shadow-lg"
                     />
@@ -386,7 +446,7 @@
             <div class="flex items-center justify-center h-screen">
                 <div class="max-w-6xl w-full px-6 text-center">
                   <div class="flex flex-col justify-center items-center min-h-screen px-8 py-12">
-                    <div class="text-center">
+                    <div class="text-center pt-20">
                       <h1 class="pb-4 text-5xl md:text-7xl font-bold uppercase tracking-[3vh]">
                         Let's Start
                       </h1>
