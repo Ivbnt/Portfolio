@@ -45,12 +45,17 @@
     .contact-item i {
       transition: transform 0.3s ease;
     }
+
+    .contact-item h3,
+    .contact-item p {
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.75), 0 0 8px rgba(255, 255, 255, 0.55);
+    }
   </style>
 </head>
 <body class="bg-white-base">
 
   <!-- Navbar -->
-  <header id="top" class="relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-0">
+  <header id="top" class="relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-[9996]">
     <div id="navbar" class="absolute w-full top-0 left-0 z-10">
         <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
             <!-- Logo -->
@@ -116,7 +121,7 @@
     </div>
     
     <!-- Menu latéral -->
-    <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20">
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg" style="z-index: 9999;">
         <div class="p-4">
             <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +146,7 @@
     </div>
 
     <!-- Overlay avec flou -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50" style="z-index: 9998;"></div>
     <!-- JavaScript pour le menu latéral -->
   <script src="menuBurger.js"></script>
 
@@ -164,16 +169,16 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Email -->
-        <div class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center cursor-pointer" onclick="window.location.href='mailto:ivanebonnet@orange.fr'">
+        <div class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block">
           <div class="mb-4 flex justify-center">
             <i class="devicon-google-plain colored text-5xl"></i>
           </div>
           <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">Email</h3>
-          <p class="text-sm text-gray-600"></p>
+          <p class="text-sm text-black">ivanebonnet@orange.fr</p>
         </div>
 
         <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/yourlinkedin" target="_blank" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center">
+        <a href="https://linkedin.com/in/ivane-bonnet" target="_blank" rel="noopener" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block cursor-pointer">
           <div class="mb-4 flex justify-center">
             <i class="devicon-linkedin-plain colored text-5xl"></i>
           </div>
@@ -182,7 +187,7 @@
         </a>
 
         <!-- GitHub -->
-        <a href="https://github.com/ivbnt" target="_blank" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center">
+        <a href="https://github.com/ivbnt" target="_blank" rel="noopener" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block cursor-pointer">
           <div class="mb-4 flex justify-center">
             <i class="devicon-github-original text-5xl"></i>
           </div>
