@@ -1,0 +1,163 @@
+
+
+/* ==============================
+   DYNAMIC ISLAND UNIQUEMENT 
+   POUR LES ÉCRANS < 768px
+   ============================== */
+   /*
+@media (max-width: 767px) {
+
+  #top {
+    z-index: auto !important; 
+  }
+  
+  body {
+    background: #D6D6D6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    background: transparent;
+    transition: all 0.4s ease;
+    padding: 0.25rem;
+  }
+  
+
+  #quickbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+  }
+
+
+  #navbar.dynamic-island {
+    position: fixed !important;
+    width: 90%;
+    max-width: 300px; 
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #D6D6D6;
+    border-radius: 9999px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    animation: fadeSlideDown 0.5s forwards ease;
+    z-index: 9999 !important;
+  }
+
+
+  #navbar.dynamic-island #quickbar {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    transition: all 0.3s ease;
+    z-index: 9999 !important;
+  }
+
+
+  @keyframes fadeSlideDown {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+ 
+  #navbar.dynamic-island a {
+    color: #333 !important;
+  }
+}
+
+*/
+
+
+
+/* ANIMATION NAVBAR*/
+.menu-link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .menu-link .original,
+  .menu-link .hidden {
+    display: flex;
+  }
+
+  .menu-link .original {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .menu-link .hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    flex-direction: row;
+  }
+
+  /* Animation lors du hover */
+  .menu-link:hover .original {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  .menu-link:hover .hidden {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animation lettre par lettre */
+  .menu-link:hover .hidden span {
+    animation: fadeInUp 0.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* delai pour chaque lettre */
+  .menu-link:hover .hidden span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .menu-link:hover .hidden span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .menu-link:hover .hidden span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .menu-link:hover .hidden span:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .menu-link:hover .hidden span:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .menu-link:hover .hidden span:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  .menu-link:hover .hidden span:nth-child(7) {
+    animation-delay: 0.7s;
+  }

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects - Ivane (Dynamic Island Navbar - Brand & Buttons)</title>
+  <!-- Tailwind (si besoin pour le reste) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Ton fichier navbar.css (optionnel) -->
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="menuburger.css">
+
+  <style>
+    /* ---- Polices et styles de base ---- */
+    .font-geologica { font-family: sans-serif; }
+    .scramble-text  { letter-spacing: 2px; text-transform: uppercase; }
+
+    /* ---- Effet ombre et animation pour le titre ---- */
+    .work-title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      opacity: 0;
+      animation: titleSlideIn 0.8s ease-out forwards;
+    }
+
+    @keyframes titleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---- Effet hover sur cartes projet ---- */
+    .project {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .project:hover {
+      transform: scale(1.15) translateY(-12px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    }
+    
+    .project::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    
+    .project:hover::after {
+      opacity: 1;
+    }
+
+    /* ---- Modal Styles ---- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      animation: slideUp 0.35s ease;
+      border: none;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #e5e5e5;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      color: #999;
+      flex-shrink: 0;
+    }
+
+    .modal-close-btn:hover {
+      background: #f8f8f8;
+      border-color: #d0d0d0;
+      color: #555;
+    }
+
+    .project-img {
+      transition: transform 0.25s ease;
+      border-radius: 6px;
+      cursor: zoom-in;
+      position: relative;
+    }
+    
+    .project-img:hover {
+      transform: scale(1.02);
+    }
+
+    .project-img-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .project-img-container::after {
+      content: '🔍';
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: all 0.25s ease;
+    }
+
+    .project-img-container:hover::after {
+      opacity: 1;
+    }
+
+    /* Modal fullscreen image */
+    .modal-fullscreen {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-fullscreen.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-fullscreen-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .modal-fullscreen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+
+    .modal-fullscreen-img.zoomed {
+      cursor: zoom-out;
+      transform: scale(1.8);
+    }
+
+    .modal-fullscreen-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-fullscreen-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .modal-title {
+      background: white;
+      color: #1a1a1a;
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .modal-title h1 {
+      font-size: 1.6rem;
+      margin: 0;
+      letter-spacing: 0.3px;
+      font-weight: 600;
+    }
+
+    .modal-title p {
+      margin: 6px 0 0 0;
+      font-size: 0.85rem;
+      color: #999;
+      font-weight: 400;
+    }
+
+    .modal-body {
+      padding: 28px;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tech-badge {
+      background: #f5f5f5;
+      color: #666;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid #e8e8e8;
+      transition: all 0.2s ease;
+    }
+
+    .tech-badge:hover {
+      background: #f0f0f0;
+      border-color: #ddd;
+      color: #333;
+    }
+
+    .modal-section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 18px 0 10px 0;
+      color: #555;
+      letter-spacing: 0.2px;
+    }
+
+    .modal-description {
+      color: #666;
+      line-height: 1.6;
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+
+    .modal-footer {
+      padding: 18px 28px 28px;
+      text-align: center;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .modal-back-btn {
+      display: inline-block;
+      padding: 9px 20px;
+      background: #1a1a1a;
+      color: white;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-size: 0.8rem;
+    }
+
+    .modal-back-btn:hover {
+      background: #2a2a2a;
+    }
+
+    .modal-back-btn:active {
+      transform: scale(0.98);
+    }
+
+  </style>
+</head>
+
+<body>
+  <header id="top" class=" relative flex items-center flex-col justify-center bg-white-base fixed z-[9996]">
+    <div id="navbar-content">
+        <div id="navbar" class=" absolute w-full top-0 left-0 z-10">
+            <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                        Ivane
+                    </a>
+                </div>
+                <!-- Icône du burger, visible uniquement sur petits écrans -->
+                <div class="md:hidden">
+                    <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Menu principal, caché sur petits écrans -->
+                <div id="menu" class="hidden md:flex">
+                    <ul class="flex space-x-6 tracking-[2px] items-center">
+                        <li>
+                            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                <span class="original">
+                                    <span>H</span><span>O</span><span>M</span><span>E</span>
+                                </span>
+                                <span class="hidden">
+                                    <span>H</span><span>O</span><span>M</span><span>E</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                <span class="original">
+                                    <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                </span>
+                                <span class="hidden">
+                                    <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                <span class="original">
+                                    <span>W</span><span>O</span><span>R</span><span>K</span>
+                                </span>
+                                <span class="hidden">
+                                    <span>W</span><span>O</span><span>R</span><span>K</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                <span class="original">
+                                    <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                </span>
+                                <span class="hidden">
+                                    <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Menu latéral -->
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg" style="z-index: 9999;">
+        <div class="p-4">
+            <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <ul class="flex flex-col space-y-4">
+                <li>
+                    <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
+                </li>
+                <li>
+                    <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
+                </li>
+                <li>
+                    <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay avec flou -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50" style="z-index: 9998;"></div>
+</header>
+  <!-- CONTENU PRINCIPAL -->
+  <div class="pt-40 md:pt-56 px-6 md:px-[5vw] pb-[4rem]">
+      
+    <!-- Titre -->
+    <div class="text-center mb-20">
+      <h1 class="work-title text-4xl md:text-5xl font-bold uppercase tracking-[1vh]">Work and Creation</h1>
+    </div>
+    
+      <!-- Barre de recherche -->
+ 
+      <div class="flex justify-center mb-12">
+        <input
+          id="search"
+          type="text"
+          placeholder="e.g. HTML, Java, Symfony..."
+          class="border-2 border-dashed border-gray-400 w-full max-w-md px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+          oninput="filterProjects()"
+        />
+      </div>
+
+      <!-- LISTE DE PROJETS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects">
+        <!-- Projet 1: OSINT Hub -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="python osint api" onclick="openModal('osinthub')">
+          <img src="img/osinthub.png" alt="OSINT Hub" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">OSINT Hub</h3>
+            <p class="text-sm text-gray-600">Python / API / OSINT</p>
+          </div>
+        </div>
+
+        <!-- Projet 2: The Red Studio -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="html css react" onclick="openModal('redstudio')">
+          <img src="img/theredstudio.jpg" alt="The Red Studio" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">The Red Studio</h3>
+            <p class="text-sm text-gray-600">HTML / CSS / React</p>
+          </div>
+        </div>
+
+        <!-- Projet 3: Cosmojet -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="html css" onclick="openModal('cosmojet')">
+          <img src="img/cosmojet.png" alt="Cosmojet" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Cosmojet</h3>
+            <p class="text-sm text-gray-600">HTML / CSS</p>
+          </div>
+        </div>
+
+        <!-- Projet 4: Towa -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java" onclick="openModal('towa')">
+          <img src="img/towa.png" alt="Towa" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Towa</h3>
+            <p class="text-sm text-gray-600">Board game in Java</p>
+          </div>
+        </div>
+
+        <!-- Projet 5: Robot Tournament -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="php symfony" onclick="openModal('robot')">
+          <img src="img/Tournoi.png" alt="Robot Tournament" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Robot Tournament</h3>
+            <p class="text-sm text-gray-600">PHP / Symfony</p>
+          </div>
+        </div>
+
+        <!-- Projet 6: Climastat -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="c# python sql" onclick="openModal('climastat')">
+          <img src="img/climastat.png" alt="Climastat - Data Visualisation App" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Climastat</h3>
+            <p class="text-sm text-gray-600">C# / Python / SQL Server</p>
+          </div>
+        </div>
+
+        <!-- Projet 7: Graph Algorithms -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java algorithms" onclick="openModal('graphs')">
+          <img src="img/graph.png" alt="Exploration of Graph Algorithms" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Graph Algorithms</h3>
+            <p class="text-sm text-gray-600">Java / Algorithms</p>
+          </div>
+        </div>
+
+        <!-- Projet 8: Labyrinth Game -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java game" onclick="openModal('labyrinth')">
+          <img src="img/labyrinth.png" alt="Labyrinth Game" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Labyrinth Game</h3>
+            <p class="text-sm text-gray-600">Java / Game Development</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal OSINT Hub -->
+    <div id="modal-osinthub" class="modal" onclick="if(event.target === this) closeModal('osinthub')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>OSINT Hub</h1>
+              <p>Automation Project — Python · API · OSINT</p>
+            </div>
+            <button onclick="closeModal('osinthub')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/osinthub.png" alt="OSINT Hub" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">API</span>
+                <span class="tech-badge">OSINT</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">OSINT Hub centralizes open-source intelligence workflows with automated data collection and streamlined APIs. It focuses on aggregating sources, normalizing outputs, and providing a clean interface for analysis.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('osinthub')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Cosmojet -->
+    <div id="modal-cosmojet" class="modal" onclick="if(event.target === this) closeModal('cosmojet')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Cosmojet</h1>
+              <p>Website Project — HTML · CSS</p>
+            </div>
+            <button onclick="closeModal('cosmojet')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/cosmojet.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">A static website showcasing a spaceship/cosmic theme with clean HTML and CSS design.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('cosmojet')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Towa -->
+    <div id="modal-towa" class="modal" onclick="if(event.target === this) closeModal('towa')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Towa</h1>
+              <p>Board game in Java</p>
+            </div>
+            <button onclick="closeModal('towa')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/towa.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">Java</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">This project is a Java-based application focused on the development of rules and artificial intelligence for a board game. The objective was to design and implement a robust rule system that governs gameplay mechanics while integrating an AI capable of challenging and engaging players.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('towa')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Robot Tournament -->
+    <div id="modal-robot" class="modal" onclick="if(event.target === this) closeModal('robot')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Robot Tournament</h1>
+              <p>Tournament Management — PHP · Symfony</p>
+            </div>
+            <button onclick="closeModal('robot')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/Tournoi.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">Symfony</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">A web application built with Symfony for managing robot tournaments with team management, match scheduling, and results tracking.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('robot')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Climastat -->
+    <div id="modal-climastat" class="modal" onclick="if(event.target === this) closeModal('climastat')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Climastat</h1>
+              <p>Data Visualisation App — C# · Python · SQL Server</p>
+            </div>
+            <button onclick="closeModal('climastat')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/climastat.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">SQL Server</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">Climastat is a comprehensive data visualisation application designed to display and analyze climate data. Built collaboratively with Isadora, this project combines C#, Python, and SQL Server to create a robust climate monitoring solution.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('climastat')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Graph Algorithms -->
+    <div id="modal-graphs" class="modal" onclick="if(event.target === this) closeModal('graphs')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Graph Algorithms</h1>
+              <p>Exploration & Visualisation — Java</p>
+            </div>
+            <button onclick="closeModal('graphs')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/graph.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">Algorithms</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">This project explores fundamental graph algorithms and their visual representations. Through implementation of BFS, DFS, and shortest path algorithms, this project showcases proficiency in algorithmic problem-solving and data structure optimization.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('graphs')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Labyrinth Game -->
+    <div id="modal-labyrinth" class="modal" onclick="if(event.target === this) closeModal('labyrinth')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>Labyrinth Game</h1>
+              <p>Java Game Development</p>
+            </div>
+            <button onclick="closeModal('labyrinth')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/labyrinth.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">Game Development</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">A Java-based labyrinth game featuring challenging puzzles and interactive gameplay. Through implementation of multiple maze levels, collision detection, and player progression systems, this project demonstrates proficiency in game design and algorithm optimization.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('labyrinth')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal The Red Studio -->
+    <div id="modal-redstudio" class="modal" onclick="if(event.target === this) closeModal('redstudio')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>The Red Studio</h1>
+              <p>Web Project — HTML · CSS · JavaScript</p>
+            </div>
+            <button onclick="closeModal('redstudio')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/TheRedStudio.png" alt="Project" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">React</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">A modern, creative web platform showcasing artistic energy and solidarity. The Red Studio features a dynamic design with smooth animations and responsive layout, built with React for optimal performance and component reusability. The project demonstrates expertise in modern front-end development with engaging user interactions.</p>
+              <h2 class="modal-section-title">Links</h2>
+              <div class="flex gap-4">
+                <a href="https://github.com/Ivbnt/TheRedStudio" target="_blank" class="text-blue-600 hover:text-blue-800 underline">GitHub Repository</a>
+                <a href="https://theredstudio.fr/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Live Website</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('redstudio')" class="modal-back-btn">Back to Projects</button>
+        </div>
+      </div>
+    </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark-base text-white py-8 mt-16 relative">
+  </footer>
+
+  <!-- Modal Fullscreen pour images -->
+  <div id="modal-fullscreen" class="modal-fullscreen" onclick="if(event.target === this) closeFullscreenModal()">
+    <div class="modal-fullscreen-content">
+      <img id="fullscreen-img" class="modal-fullscreen-img" src="" alt="Fullscreen" />
+      <button class="modal-fullscreen-close" onclick="closeFullscreenModal()">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    // Functions pour modales
+    function openModal(projectId) {
+      const modal = document.getElementById('modal-' + projectId);
+      if (modal) {
+        modal.classList.add('show');
+      }
+    }
+
+    function closeModal(projectId) {
+      const modal = document.getElementById('modal-' + projectId);
+      if (modal) {
+        modal.classList.remove('show');
+      }
+    }
+
+    // Fullscreen image modal
+    function openFullscreenModal(imageSrc) {
+      const modal = document.getElementById('modal-fullscreen');
+      const img = document.getElementById('fullscreen-img');
+      img.src = imageSrc;
+      img.classList.remove('zoomed');
+      modal.classList.add('show');
+      
+      // Toggle zoom on click
+      img.onclick = function(e) {
+        e.stopPropagation();
+        img.classList.toggle('zoomed');
+      };
+    }
+
+    function closeFullscreenModal() {
+      const modal = document.getElementById('modal-fullscreen');
+      modal.classList.remove('show');
+      const img = document.getElementById('fullscreen-img');
+      img.classList.remove('zoomed');
+    }
+
+    // Fermer modal avec Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modals = document.querySelectorAll('.modal.show');
+        modals.forEach(modal => {
+          modal.classList.remove('show');
+        });
+        closeFullscreenModal();
+      }
+    });
+
+    // Filtre les projets par technologie ET titre
+    function filterProjects() {
+      const searchValue = document.getElementById("search").value.toLowerCase();
+      const projects = document.querySelectorAll(".project");
+      projects.forEach(proj => {
+        const tech = proj.getAttribute("data-tech").toLowerCase();
+        const title = proj.querySelector("h3").textContent.toLowerCase();
+        
+        // Affiche si la recherche correspond à la technologie OU au titre
+        const matches = tech.includes(searchValue) || title.includes(searchValue);
+        proj.style.display = matches ? "block" : "none";
+      });
+    }
+
+    // Effet parallax et animation au scroll pour les cartes
+    const projects = document.querySelectorAll('.project');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'projectFadeIn 0.6s ease-out forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    projects.forEach(project => {
+      project.style.opacity = '0';
+      observer.observe(project);
+    });
+
+    // Ajouter du CSS dynamique pour l'animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes projectFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  <script src="menuBurger.js"></script>
+</body>
+</html>

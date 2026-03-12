@@ -6,133 +6,471 @@
   <title>Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="menuburger.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="dIsland.css">
+    <style>
+     /* ============================
+       WORK1 et WORK2 en "sticky"
+       ============================ */
+       .panel {
+      position: sticky;
+      top: 0;
+      width: 100%;
+
+    }
+
+    #work1 {
+
+
+      z-index: 10;          /* en dessous */
+      transform: translateY(100%);
+    }
+
+    #work1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/cosmojet.png') center/cover no-repeat;
+        filter: blur(10px);
+        z-index: -1;
+        } 
+
+    #work2 {
+      z-index: 20;          /* au-dessus */
+      /* Au départ : Work2 est caché en bas => translateY(100%) */
+      transform: translateY(100%);
+    }
+
+    #work2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/towa.png') center/cover no-repeat;
+        filter: blur(10px);
+        z-index: -1;
+        }
+ 
+    #work3 {
+      background: #495057; /* rouge */
+      z-index: 30;          /* au-dessus */
+      /* Au départ : Work2 est caché en bas => translateY(100%) */
+      transform: translateY(100%);
+
+    }
+
+    #work3::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/Tournoi.png') center/cover no-repeat;
+        filter: blur(10px) ;
+        z-index: -1;
+        
+        }
+
+        #main::before {
+
+        backdrop-filter: blur(10px);
+        
+        }
+
+    /* Background image pour le header */
+    #top {
+        background: transparent;
+    }
+
+    /* Texte blanc pour tout le header */
+    #top * {
+        color: white !important;
+    }
+
+    /* Spécifiquement pour le logo et les liens de navigation */
+    #top a, #top span, #top div {
+        color: black !important;
+    }
+
+    /* Pour les boutons burger */
+    #top svg {
+        stroke: black !important;
+    }
+
+    /* Contour blanc pour les lettres noires (logo, menu, titre, footer) */
+    #top a,
+    .menu-link,
+    #box-name > div > div,
+    #features > div > span,
+    #main .text-black:not(a),
+    #me,
+    #main h2.text-black,
+    #main p.text-black {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Pas de contour sur le bouton Learn More */
+    .inline-block.px-6 {
+        text-shadow: none !important;
+    }
+
+    /* Contour blanc pour SELECTED et WORKS */
+    .scroll-container h3.text-black,
+    .scroll-container h1.text-black {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Contour blanc pour la section finale (LET'S START, SOMETHING GREAT, TOGETHER) */
+    .after h1,
+    .after h2 {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Contour blanc pour CONTACT NOW */
+    .btn-circle span {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.8),
+            0 0 8px rgba(255, 255, 255, 0.6) !important;
+    }
+
+    /* Animation d'apparition pour DESIGN TO DEVELOPMENT */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #box-name > div > div:nth-child(1) {
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    #box-name > div > div:nth-child(2) {
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+  </style>
+  
 </head>
-<body class="">
-    <header class="w-full h-screen relative flex items-center justify-center">
-        <div id="navbar" class="absolute w-full top-0 left-0 z-10">
-            <div id="quickbar" class="max-w-7xl mx-auto px-20 py-20 flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="tracking-[2px] font-bold uppercase">
-                    Ivane
-                    </a>
-                </div>
-                <!-- Menu -->
-                <div id="menu" class="flex">
-                    <ul class="flex space-x-6 tracking-[2px] items-center">
-                        <li>
-                            <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
-                                <span class="original">
-                                    <span>H</span>
-                                    <span>O</span>
-                                    <span>M</span>
-                                    <span>E</span>
-                                </span>
-                                <span class="hidden">
-                                    <span>H</span>
-                                    <span>O</span>
-                                    <span>M</span>
-                                    <span>E</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
-                                <span class="original">
-                                    <span>A</span>
-                                    <span>B</span>
-                                    <span>O</span>
-                                    <span>U</span>
-                                    <span>T</span>
-                                </span>
-                                <span class="hidden">
-                                    <span>A</span>
-                                    <span>B</span>
-                                    <span>O</span>
-                                    <span>U</span>
-                                    <span>T</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="work.html" class="menu-link px-3 py-2 text-sm leading-none">
-                                <span class="original">
-                                    <span>W</span>
-                                    <span>O</span>
-                                    <span>R</span>
-                                    <span>K</span>
-                                </span>
-                                <span class="hidden">
-                                    <span>W</span>
-                                    <span>O</span>
-                                    <span>R</span>
-                                    <span>K</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
-                                <span class="original">
-                                    <span>C</span>
-                                    <span>O</span>
-                                    <span>N</span>
-                                    <span>T</span>
-                                    <span>A</span>
-                                    <span>C</span>
-                                    <span>T</span>
-                                </span>
-                                <span class="hidden">
-                                    <span>C</span>
-                                    <span>O</span>
-                                    <span>N</span>
-                                    <span>T</span>
-                                    <span>A</span>
-                                    <span>C</span>
-                                    <span>T</span>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+<body class="bg-transparent">
+    <!-- Conteneur 3D background -->
+    <div id="bg3d" style="position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;"></div>
+    
+    <header id="top" class="h-screen relative flex items-center flex-col justify-center fixed z-[9996] bg-transparent">
+        <div id="navbar-content">
+            <div id="navbar" class=" absolute w-full top-0 left-0 z-10">
+                <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                            Ivane
+                        </a>
+                    </div>
+                    <!-- Icône du burger, visible uniquement sur petits écrans -->
+                    <div class="md:hidden">
+                        <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Menu principal, caché sur petits écrans -->
+                    <div id="menu" class="hidden md:flex">
+                        <ul class="flex space-x-6 tracking-[2px] items-center">
+                            <li>
+                                <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>H</span><span>O</span><span>M</span><span>E</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>H</span><span>O</span><span>M</span><span>E</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>W</span><span>O</span><span>R</span><span>K</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>W</span><span>O</span><span>R</span><span>K</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                                    <span class="original">
+                                        <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                    </span>
+                                    <span class="hidden">
+                                        <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="box-name" class="w-full top-0 left-0">
-            <div class=" flex flex-col max-w-7xl mx-auto px-20 py-20">
-                <div class="text-[5vw] font-bold uppercase leading-[0.9] mb-4 ml-0 pl-0 flex justify-center">
-                    Developer,
+        
+        
+        <!-- Menu latéral -->
+        <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg" style="z-index: 9999;">
+            <div class="p-4">
+                <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <ul class="flex flex-col space-y-4">
+                    <li>
+                        <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Overlay avec flou -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50" style="z-index: 9998;"></div>
+
+        <div id="box-name" class="w-full">
+            <div class="flex flex-col text-center lg:mx-auto lg:px-64 lg:py-20 md:px-16 md:py-16 sm:px-8 sm:py-8 px-4 py-4">
+                <div class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase tracking-[1vh]">
+                    Design to 
                 </div>
-                <div id="switch" class="flex justify-end w-10/12 ">
-                    <span class="text-[4vw] font-1">
-                        JavaScript
-                    </span>
-                    <span class="text-[4vw] hidden font-2">
-                        Python
-                    </span>
-                    <span class="text-[4vw] hidden font-3">
-                        Java
-                    </span>
-                    <span class="text-[4vw] hidden font-4">
-                        C#
-                    </span>
-                    <span class="text-[4vw] hidden font-5">
-                        PHP
-                    </span>
+                <div id="dev" class="font-geologica flex items-center  text-[5vw] md:text-[4vw] sm:text-[6vw] font-bold uppercase mb-4 tracking-[1vh]">
+                    Development
                 </div>
+                <!--<div class="font-geologica flex items-center text-xl font-bold uppercase pt-4">
+                    ivane portfolio site
+                </div>-->
+                <!--
+                <div id="switch" class="flex justify-center items-center w-full">
+                    <span class="text-[3vw] font-1">JavaScript</span>
+                    <span class="text-[3vw] hidden font-2">Python</span>
+                    <span class="text-[3vw] hidden font-3">Java</span>
+                    <span class="text-[3vw] hidden font-4">C#</span>
+                    <span class="text-[3vw] hidden font-5">PHP</span>
+                </div>
+                -->
             </div>   
         </div>
+        <div id="features" class="w-full absolute bottom-8 left-0 text-center">
+            <div class="flex justify-evenly uppercase text-xs tracking-[3px]">
+                <span class="mx-2">design</span>
+                <span class="mx-2">&</span>
+                <span class="mx-2">coding</span>
+            </div>
+        </div>
     </header>
-    <main class="p-8">
-        <section class="w-full h-screen">
 
-        </section>
-        <section class="w-full h-screen">
 
+
+    
+    <script src="menuBurger.js"></script>
+    <main >
+        <div id="main" class="bg-transparent min-h-auto md:min-h-screen flex items-center justify-center relative px-4 sm:px-8 md:px-16 lg:px-24 py-8 md:py-0">
+            <div class="w-full">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-24 items-start">
+                    <!-- Colonne 1: Titre -->
+                    <div>
+                        <h1 id="me" class="font-geologica text-2xl sm:text-4xl md:text-5xl font-bold text-black leading-tight uppercase" style="font-weight: 700; letter-spacing: 0.1em; line-height: 1.2;">
+                            Ivane<br/>Bonnet
+                        </h1>
+                    </div>
+
+                    <!-- Colonne 2: Description -->
+                    <div class="md:col-span-1">
+                        <p class="text-xs sm:text-base md:text-lg leading-relaxed font-medium text-black" style="line-height: 1.9; font-weight: 500; text-align: justify;">
+                        Full-stack web developer, passionate about high-performance, user-centered custom applications.                        </p>
+                    </div>
+
+                    <!-- Colonne 3: CTA -->
+                    <div class="flex items-center justify-center h-full self-stretch">
+                        <a 
+                            href="about.html" 
+                            class="px-4 sm:px-6 py-2 border-2 border-black text-black font-semibold text-xs sm:text-sm hover:bg-black hover:text-white transition-all duration-300 whitespace-nowrap text-center"
+                        >
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+      
+        
+        <div class="scroll-container bg-transparent text-black " id="scrollContainer">
+            <div id="Work" class="panel z-5 h-screen m-0 p-0 flex flex-col items-center justify-center md:items-start md:justify-start">
+                <h3 class="top-0 mx-auto text-center text-[3vw] tracking-[2vw] sm:text-[4vw] sm:tracking-[1.5vw] md:text-[3vw] md:tracking-[1vw] text-black">
+                    SELECTED
+                </h3>
+                <h1 class="sticky top-0 mx-auto text-center text-[10vw] transition-all duration-300 hacker-effect sm:text-[8vw] text-black">
+                    <span class="letter animated">W</span>
+                    <span class="letter animated">O</span>
+                    <span class="letter animated">R</span>
+                    <span class="letter hacker-letter">K<span class="random-char"></span></span>
+                    <span class="letter hacker-letter">S<span class="random-char"></span></span>
+                </h1>
+            </div>
+            
+            <section id="work1" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case1" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#01</h6>
+                    </div>
+                    
+                    <!-- Colonne 2 : Image -->
+                    <div id="image1" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/cosmojet.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover" >
+                    </div>
+                    
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title1" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Cosmojet</h1>
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                Creation of a front-end website, in a responsive manner, for the creation of a product or service.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="works.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">See more</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <section id="work2" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case2" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#02</h6>
+                    </div>
+                    
+                    <!-- Colonne 2 : Image -->
+                    <div id="image2" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/towa.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
+                    </div>
+                    
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title2" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Towa</h1>
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                This project is a Java-based application focused on the development of rules and artificial intelligence for a board game.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="works.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">See more</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="work3" class="panel min-h-screen bg-black flex items-center justify-center p-4">
+                <div class="flex flex-col lg:flex-row gap-6 max-w-6xl w-full">
+                    <!-- Colonne 1 : Numéro (#01) -->
+                    <div id="case3" class="hidden lg:flex lg:w-1/12">
+                        <h6 class="font-bold text-white text-lg">#03</h6>
+                    </div>
+                    
+                    <!-- Colonne 2 : Image -->
+                    <div id="image3" class="flex items-center justify-center lg:w-8/12">
+                        <img src="img/Tournoi.png" alt="Présentation de Cosmojet" class="w-full h-auto object-cover">
+                    </div>
+                    
+                    <!-- Colonne 3 : Texte -->
+                    <div id="title3" class="flex flex-col justify-center lg:w-3/12 text-white">
+                        <div class="mb-4">
+                            <h1 class="font-geologica text-3xl lg:text-4xl font-semibold tracking-wide uppercase scramble-text">Robot Tournament</h1>
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-geologica text-lg lg:text-xl">
+                                This project is a full-stack web application designed to enable the creation and management of robot tournament organizations.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="works.html" class="inline-block font-geologica text-lg lg:text-xl font-normal mt-4 border-b-4 border-white hover:text-gray-300 transition duration-300">See more</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          </div>
+        <section id="" class="after w-full bg-white-base">
+            <div class="flex items-center justify-center min-h-screen md:h-screen">
+                <div class="max-w-6xl w-full px-4 sm:px-6 text-center">
+                  <div class="flex flex-col justify-center items-center min-h-auto md:min-h-screen px-4 sm:px-8 py-8 md:py-12">
+                    <div class="text-center pt-8 md:pt-20">
+                      <h1 class="pb-2 md:pb-4 text-3xl sm:text-5xl md:text-7xl font-bold uppercase tracking-[1.5vh] md:tracking-[3vh]">
+                        Let's Start
+                      </h1>
+                      <h2 class="text-center text-sm sm:text-2xl md:text-[3vw] uppercase">
+                        Something Great
+                      </h2>
+                    </div>
+                    <div class="mt-4 md:mt-8 pt-8 md:pt-16" >
+                      <a href="contact.html" 
+                         class="btn-circle hover:bg-[#1C1C1C] hover:text-white w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 border border-gray-400 rounded-full flex items-center justify-center hover:border-black transition-all duration-300">
+                        <span class="text-xs sm:text-sm uppercase tracking-widest flex items-center space-x-2">
+                          <span>Contact Now</span>
+                        </span>
+                      </a>
+                    </div>
+                    <h1 class="mt-4 md:mt-8 text-2xl sm:text-4xl md:text-7xl font-extrabold uppercase tracking-tight pt-8 md:pt-16 italic">
+                      T o g e t h e r
+                    </h1>
+                  </div>
+                </div>
+              </div> 
         </section>
     </main>
-    <footer class="p-4 border-t border-gray-300  text-center">
-        <p>Footer</p>
+    <footer class="bg-white-base text-center text-sm text-gray-500 py-6 mt-12">
+        Design & Development by Ivane Bonnet
     </footer>
-
-  <script src="index.js"></script>
+    <script src="scrollWorks.js"></script>
+    <script src="index.js"></script>
+    <script type="module" src="bg3d.js"></script>
 </body>
 </html>

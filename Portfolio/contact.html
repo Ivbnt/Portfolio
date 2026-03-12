@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Ivane</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="menuburger.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <style>
+    /* ---- Effet ombre et animation pour le titre ---- */
+    .page-title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      opacity: 0;
+      animation: titleSlideIn 0.8s ease-out forwards;
+    }
+
+    @keyframes titleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-item {
+      transition: all 0.3s ease;
+      pointer-events: auto;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .contact-item:hover i {
+      transform: scale(1.15);
+    }
+
+    .contact-item i {
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item h3,
+    .contact-item p {
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.75), 0 0 8px rgba(255, 255, 255, 0.55);
+    }
+  </style>
+</head>
+<body class="bg-white-base">
+
+  <!-- Navbar -->
+  <header id="top" class="relative flex items-center flex-col justify-center bg-[#D6D6D6] fixed z-[9996]">
+    <div id="navbar" class="absolute w-full top-0 left-0 z-10">
+        <div id="quickbar" class="max-w-7xl mx-auto px-4 md:px-20 py-4 md:py-20 flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="index.html" class="tracking-[2px] font-bold uppercase">
+                    Ivane
+                </a>
+            </div>
+            <!-- Icône du burger, visible uniquement sur petits écrans -->
+            <div class="md:hidden">
+                <button id="burger" class="text-gray-800 focus:outline-none" aria-label="Ouvrir le menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Menu principal, caché sur petits écrans -->
+            <div id="menu" class="hidden md:flex">
+                <ul class="flex space-x-6 tracking-[2px] items-center">
+                    <li>
+                        <a href="index.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                            <span class="hidden">
+                                <span>H</span><span>O</span><span>M</span><span>E</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="works.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                            <span class="hidden">
+                                <span>W</span><span>O</span><span>R</span><span>K</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="menu-link px-3 py-2 text-sm leading-none">
+                            <span class="original">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                            <span class="hidden">
+                                <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Menu latéral -->
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg" style="z-index: 9999;">
+        <div class="p-4">
+            <button id="close-btn" class="text-gray-800 focus:outline-none mb-4" aria-label="Fermer le menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <ul class="flex flex-col space-y-4">
+                <li>
+                    <a href="index.html" class="block px-3 py-2 text-sm leading-none">HOME</a>
+                </li>
+                <li>
+                    <a href="about.html" class="block px-3 py-2 text-sm leading-none">ABOUT</a>
+                </li>
+                <li>
+                    <a href="works.html" class="block px-3 py-2 text-sm leading-none">WORK</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="block px-3 py-2 text-sm leading-none">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Overlay avec flou -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50" style="z-index: 9998;"></div>
+    <!-- JavaScript pour le menu latéral -->
+  <script src="menuBurger.js"></script>
+
+</header>
+
+  <!-- Conteneur Principal -->
+  <div class="pt-40 md:pt-56 px-6 md:px-[5vw] pb-20">
+    <!-- Titre de la page -->
+    <div class="text-center mb-16">
+      <h1 class="page-title text-4xl md:text-5xl font-bold uppercase tracking-[1vh] mb-4">
+        Contact Me
+      </h1>
+      <p class="text-base md:text-lg text-gray-700">
+        Get in touch via email, LinkedIn, or GitHub
+      </p>
+    </div>
+
+    <!-- Section Contact -->
+    <div class="max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Email -->
+        <div class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-google-plain colored text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">Email</h3>
+          <p class="text-sm text-black">ivanebonnet@orange.fr</p>
+        </div>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/ivane-bonnet" target="_blank" rel="noopener" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block cursor-pointer">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-linkedin-plain colored text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">LinkedIn</h3>
+          <p class="text-sm text-gray-600"></p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/ivbnt" target="_blank" rel="noopener" class="contact-item group bg-white border border-gray-300 rounded-lg p-8 hover:border-black hover:shadow-xl text-center block cursor-pointer">
+          <div class="mb-4 flex justify-center">
+            <i class="devicon-github-original text-5xl"></i>
+          </div>
+          <h3 class="text-lg font-bold uppercase mb-2 tracking-[1px]">GitHub</h3>
+          <p class="text-sm text-gray-600"></p>
+        </a>
+
+      </div>
+
+      <!-- Message additionnel -->
+      <div class="text-center mt-16">
+        <p class="text-gray-700 mb-6">
+          I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 py-6 mt-12">
+    Design & Development by Ivane Bonnet
+  </footer>
+
+  <script src="menuBurger.js"></script>
+</body>
+</html>
