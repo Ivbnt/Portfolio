@@ -477,7 +477,16 @@
 
       <!-- LISTE DE PROJETS -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="projects">
-        <!-- Projet 1: The Red Studio -->
+        <!-- Projet 1: OSINT Hub -->
+        <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="python osint api" onclick="openModal('osinthub')">
+          <img src="img/osinthub.png" alt="OSINT Hub" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">OSINT Hub</h3>
+            <p class="text-sm text-gray-600">Python / API / OSINT</p>
+          </div>
+        </div>
+
+        <!-- Projet 2: The Red Studio -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="html css react" onclick="openModal('redstudio')">
           <img src="img/theredstudio.jpg" alt="The Red Studio" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -486,7 +495,7 @@
           </div>
         </div>
 
-        <!-- Projet 2: Cosmojet -->
+        <!-- Projet 3: Cosmojet -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="html css" onclick="openModal('cosmojet')">
           <img src="img/cosmojet.png" alt="Cosmojet" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -495,7 +504,7 @@
           </div>
         </div>
 
-        <!-- Projet 3: Towa -->
+        <!-- Projet 4: Towa -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java" onclick="openModal('towa')">
           <img src="img/towa.png" alt="Towa" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -504,7 +513,7 @@
           </div>
         </div>
 
-        <!-- Projet 4: Robot Tournament -->
+        <!-- Projet 5: Robot Tournament -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="php symfony" onclick="openModal('robot')">
           <img src="img/Tournoi.png" alt="Robot Tournament" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -513,7 +522,7 @@
           </div>
         </div>
 
-        <!-- Projet 5: Climastat -->
+        <!-- Projet 6: Climastat -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="c# python sql" onclick="openModal('climastat')">
           <img src="img/climastat.png" alt="Climastat - Data Visualisation App" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -522,7 +531,7 @@
           </div>
         </div>
 
-        <!-- Projet 6: Graph Algorithms -->
+        <!-- Projet 7: Graph Algorithms -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java algorithms" onclick="openModal('graphs')">
           <img src="img/graph.png" alt="Exploration of Graph Algorithms" class="w-full h-48 object-cover" />
           <div class="p-4">
@@ -531,13 +540,50 @@
           </div>
         </div>
 
-        <!-- Projet 7: Labyrinth Game -->
+        <!-- Projet 8: Labyrinth Game -->
         <div class="project bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300" data-tech="java game" onclick="openModal('labyrinth')">
           <img src="img/labyrinth.png" alt="Labyrinth Game" class="w-full h-48 object-cover" />
           <div class="p-4">
             <h3 class="font-geologica text-lg scramble-text mb-2 text-gray-900">Labyrinth Game</h3>
             <p class="text-sm text-gray-600">Java / Game Development</p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal OSINT Hub -->
+    <div id="modal-osinthub" class="modal" onclick="if(event.target === this) closeModal('osinthub')">
+      <div class="modal-content">
+        <div class="modal-title">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h1>OSINT Hub</h1>
+              <p>Automation Project — Python · API · OSINT</p>
+            </div>
+            <button onclick="closeModal('osinthub')" class="modal-close-btn">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-6">
+            <div>
+              <div class="project-img-container" onclick="openFullscreenModal(this.querySelector('img').src)">
+                <img src="img/osinthub.png" alt="OSINT Hub" class="project-img w-full" />
+              </div>
+            </div>
+            <div>
+              <h2 class="modal-section-title">Technologies Used</h2>
+              <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">API</span>
+                <span class="tech-badge">OSINT</span>
+              </div>
+              <h2 class="modal-section-title">Project Overview</h2>
+              <p class="modal-description">OSINT Hub centralizes open-source intelligence workflows with automated data collection and streamlined APIs. It focuses on aggregating sources, normalizing outputs, and providing a clean interface for analysis.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal('osinthub')" class="modal-back-btn">Back to Projects</button>
         </div>
       </div>
     </div>
